@@ -1,6 +1,7 @@
 ---
 import { t } from "astro-i18n";
 export const prerender = false;
+
 //Komponenter
 import Layout from "../layouts/Layout.astro";
 import Form from "../components/arrangement/Form.astro";
@@ -8,191 +9,173 @@ import Card from "../components/arrangement/Card.astro";
 import { Image } from "astro:assets";
 
 //Billeder
-import Teapot from "../assets/illustrations/white/teapot-with-three-cups.webp";
-import Cutlery from "../assets/illustrations/white/bestik.avif";
-import Citroner from "../assets/illustrations/brown/citroner.avif";
-import Croissant from "../assets/illustrations/brown/croissant.avif";
-import Vase from "../assets/illustrations/blue/vase.svg";
-import smallCakes from "../assets/img/smallCakes.avif";
 import ReadlineLink from "../components/menu/ReadlineLink.astro";
+
+//arrow icons
+import ForwardArrow from "../assets/icons/forward-arrow-icon.svg";
+import BackwardArrow from "../assets/icons/back-arrow-icon.svg";
 ---
 
 <Layout title={t("Arrangement & events")}>
   <main class="m-margin space-y-large">
-    <article
-      class="grid grid-cols-1 lg:grid-cols-[1.3fr_.9fr] gap-large md-large md:mb-negative"
-    >
-      <header class="flex flex-col gap-large">
+    <article class="grid">
+      <header class="flex flex-col gap-large lg:hidden">
         <h1 class="text-header-1 leading-height-header-1">
           {t("Arrangementer & events hos Kær Kaffebar")}
         </h1>
         <div>
-          <h3
-            class="text-neutral-1 text-header-3 font-body-text leading-height-header-3"
-          >
-          <strong>
-            {t("Hold dit næste arrangement ")}
-          </strong>
-            {
-                t(
-                  "i de stemningsfulde lokaler hos"
-                )
-              }
-              <strong>
-                {t(" Kær Kaffebar")}
-              </strong>
-              {t("– perfekt til alt fra fester til firmaevents.")} 
-              <strong>
-                 {t("Send os en forespørgsel, så klarer vi resten!")}
-              </strong>
+          <h3 class="text-neutral-1 text-header-3 font-body-text leading-height-header-3">
+            {t("Hold dit næste arrangement i de stemningsfulde lokaler hos Kær Kaffebar.")}
+            <strong>
+              {t("Send os en forespørgsel,")}
+            </strong>
+            {t("så klarer vi resten!")}
           </h3>
         </div>
         <div class="lg:hidden md:hidden">
-          <ReadlineLink href="#Form" variant="primary"
-            >Send forespørgelse</ReadlineLink
-          >
+          <ReadlineLink href="#Form" variant="primary">Send forespørgelse</ReadlineLink>
         </div>
       </header>
-      <div class="grid grid-cols-2 gap-default lg:grid-rows-[auto]">
-        <div class="col-span-2">
-          <video
-            muted
-            loop
-            autoplay
-            aria-hidden="true"
-            class="rounded-full w-full h-auto object-cover"
-          >
-            <source src="/video/arrangement-og-event.webm" type="video/webm" />
-          </video>
-        </div>
-        <Image
-          src={Vase}
-          alt={t("Blue illustration of a vase with flowers")}
-          width={120}
-          height={120}
-          class="place-self-center"
-          loading="eager"
-        />
-        <Image
-          src={smallCakes}
-          alt={t("small cakes with burned cream and eatable flowers on top")}
-          width={270}
-          height={270}
-          class="w-full object-contain"
-          loading="eager"
-        />
-      </div>
     </article>
-    <div
-      class="lg:grid lg:grid-cols-[1fr_minmax(400px,50%)_minmax(300px,40%)_1fr] gap-large"
-    >
-      <section class="col-start-2 col-end-3 flex flex-col gap-large mb-section">
-        <Card
-          image={Teapot}
-          alt="white colored illustration with outlined flowing teapot with three teacups"
-          loading="loading"
-          imageSize="w-full h-auto"
-          imagePosition="my-[-10%] mx-[50%]"
-          bgColor="bg-neutral-3"
-          fontColor="text-neutral-1"
-          title={t("Arrangement")}
-          subtitle={t("Hold dit næste arrangement hos os")}
-          description={t(
-            "Små selskaber i hyggelige rammer – perfekt til fødselsdage, babyshowers og bogklubber."
-          )}
-          popUpTitle={t("Arrangement")}
-          subPopUpTitle={t(
-            "Hvis du leder efter det ideelle sted til dit næste arrangement, behøver du ikke lede længere end Kær Kaffebar."
-          )}
-          detailsOne={t(
-            "Send en forespørgelse om arrangement og så vil vi kontakte dig angående flere detaljer."
-          )}
-          detailsTwo={t(
-            "Lad os sammen skabe et mindeværdigt arrangement, som dine gæster vil tale om i lang tid fremover!"
-          )}
-        />
-        <Card
-          image={Cutlery}
-          alt="white colored illustration with outlined fork knife and spoon"
-          loading="loading"
-          imageSize="w-[50%] h-auto"
-          imagePosition="my-[-10%] mx-[75%] rotate-[-30deg]"
-          bgColor="bg-accent"
-          fontColor="text-primary"
-          title={t("Event")}
-          subtitle={t("Planlæg et unikt event på Kær Kaffebar")}
-          description={t(
-            "Workshops, pop-ups eller private aftenarrangementer? Vi hjælper dig med at skabe stemningen"
-          )}
-          popUpTitle={t("Event")}
-          subPopUpTitle={t(
-            "Hos Kær Kaffebar tilbyder vi den perfekte ramme for dit næste PR-event."
-          )}
-          detailsOne={t(
-            "Vores hyggelige og stemningsfulde café i hjertet af Valby er ideel til at skabe en intim og imødekommende atmosfære, hvor din virksomheds budskab kan komme til sin ret."
-          )}
-          detailsTwo={t(
-            "Med vores flotte indretning, udendørs siddepladser i solen og lækre udvalg af økologisk kaffe, friskpresset juice, og hjemmelavede specialiteter, kan du give dine gæster en uforglemmelig oplevelse."
-          )}
-          detailsThree={t(
-            "Uanset om det drejer sig om en produktlancering, en netværksbegivenhed eller andet, kan vi skræddersy arrangementet til dine behov. Vi tilbyder muligheden for at reservere hele caféen og vores dedikerede personale sørger for, at alt forløber glat. Vi kan desuden arrangere specialmenuer, der passer til dit event, med tanke for dit brands identitet."
-          )}
-        />
-        <Card
-          image={Citroner}
-          alt="brown colored illustration with whole and sliced lemons"
-          loading="lazy"
-          imageSize="w-[70%] h-auto"
-          imagePosition="my-[2%] mx-[40%] rotate-[140deg]"
-          bgColor="bg-neutral-2"
-          fontColor="text-neutral-1"
-          title={t("Catering")}
-          subtitle={t("Catering med kærlighed og kvalitet")}
-          description={t(
-            "Bestil morgenmad, frokost eller kagebord til din næste sammenkomst – lavet med omtanke."
-          )}
-          popUpTitle={t("Catering")}
-          subPopUpTitle={t(
-            "Lad os tage os af maden – så du kan tage dig af gæsterne."
-          )}
-          detailsOne={t(
-            "Hos Kær Kaffebar tilbyder vi catering til både private og professionelle arrangementer, store som små. Uanset om du planlægger en fødselsdag, et firmaevent, en reception eller et møde, står vi klar med smagfulde løsninger, der passer perfekt til anledningen."
-          )}
-          detailsTwo={t(
-            "Vi laver alt fra friskbagte kager og brød til lette anretninger, brunch, frokost og specialkaffe. Vores retter er lavet med kærlighed og omtanke – og vi bruger friske, økologiske råvarer, hvor det er muligt."
-          )}
-          detailsThree={t(
-            "Har du særlige ønsker eller behov? Vi skræddersyr gerne en menu, der matcher dine præferencer og dit arrangement – både i smag og stil."
-          )}
-        />
-        <Card
-          alt="brown colored illustration with a croissant"
-          image={Croissant}
-          loading="lazy"
-          imageSize="w-[50%] h-auto"
-          imagePosition="my-[-4%] mx-[70%] rotate-[-10deg]"
-          bgColor="bg-primary"
-          fontColor="text-neutral-1"
-          border="border-2"
-          borderColor="border-faded-highlight"
-          title={t("Kage og bestilling")}
-          subtitle={t("Bestil hjemmelavede kager til enhver lejlighed")}
-          description={t(
-            "Bryllup, fødselsdage eller bare fordi - vi bager med smag og stil"
-          )}
-          popUpTitle={t("Kage og bestilling")}
-          subPopUpTitle={t("Skal der lidt ekstra sødt på bordet?")}
-          detailsOne={t(
-            "Bestil en eller flere af vores populære hjemmebagte kager til din fest eller fejring."
-          )}
-          detailsTwo={t(
-            "Vi bager efter sæson og tilbyder alt fra klassiske favoritter til unikke specialiteter."
-          )}
-        />
-      </section>
+    <section class="flex flex-col md:gap-large">
+      <h1 class="text-header-1 leading-height-header-1 max-w-[700px] hidden lg:block">
+        {t("Arrangementer & events hos Kær Kaffebar")}
+      </h1>
+
+      <article class="hidden lg:flex justify-between items-center w-full gap-default">
+        <div class="max-w-[700px]">
+          <h3 class="text-neutral-1 text-header-3 font-body-text leading-height-header-3">
+            {t("Hold dit næste arrangement i de stemningsfulde lokaler hos Kær Kaffebar.")}
+            <strong>
+              {t("Send os en forespørgsel,")}
+            </strong>
+            {t("så klarer vi resten!")}
+          </h3>
+        </div>
+
+        <div class="flex justify-end gap-default shrink-0">
+          <button id="backBtnDesktop" class="bg-accent hover:bg-accent-hover rounded-full p-default w-fit hover:accent-accent-hover">
+            <img src={BackwardArrow.src} alt="tilbage" width="20" height="20" loading="lazy" />
+          </button>
+          <button id="nextBtnDesktop" class="bg-accent hover:bg-accent-hover rounded-full p-default w-fit hover:accent-accent-hover">
+            <img src={ForwardArrow.src} alt="næste" width="20" height="20" loading="lazy" />
+          </button>
+        </div>
+      </article>
+
+      <div class="flex justify-end gap-default pb-default md:p-0 lg:hidden">
+        <button id="backBtnMobile" class="bg-accent hover:bg-accent-hover rounded-full p-default w-fit hover:accent-accent-hover">
+          <img src={BackwardArrow.src} alt="tilbage" width="20" height="20" loading="lazy" />
+        </button>
+        <button id="nextBtnMobile" class="bg-accent hover:bg-accent-hover rounded-full p-default w-fit hover:accent-accent-hover">
+          <img src={ForwardArrow.src} alt="næste" width="20" height="20" loading="lazy" />
+        </button>
+      </div>
+      <div class="relative">
+        <div id="galleryScroll" class="relative h-[500px] md:h-[700px] flex overflow-x-scroll gap-default items-stretch">
+          <Card image="arrangement.webp" alt="croissanter" loading="loading" bgColor="bg-neutral-3" title={t("Arrangement")} subtitle={t("Hold dit næste arrangement hos os")} description={t("Små selskaber i hyggelige rammer – perfekt til fødselsdage, babyshowers og bogklubber.")} popUpTitle={t("Arrangement")} subPopUpTitle={t("Hvis du leder efter det ideelle sted til dit næste arrangement, behøver du ikke lede længere end Kær Kaffebar.")} detailsOne={t("Send en forespørgelse om arrangement og så vil vi kontakte dig angående flere detaljer.")} detailsTwo={t("Lad os sammen skabe et mindeværdigt arrangement, som dine gæster vil tale om i lang tid fremover!")} btnText="Læs mere om arrangement" />
+          <Card
+            image="event.webp"
+            alt="Kær Kaffebar skilt"
+            loading="loading"
+            bgColor="bg-highlight"
+            title={t("Event")}
+            subtitle={t("Planlæg et unikt event på Kær Kaffebar")}
+            description={t("Workshops, pop-ups eller private aftenarrangementer? Vi hjælper dig med at skabe stemningen")}
+            popUpTitle={t("Event")}
+            subPopUpTitle={t("Hos Kær Kaffebar tilbyder vi den perfekte ramme for dit næste PR-event.")}
+            detailsOne={t("Vores hyggelige og stemningsfulde café i hjertet af Valby er ideel til at skabe en intim og imødekommende atmosfære, hvor din virksomheds budskab kan komme til sin ret.")}
+            detailsTwo={t("Med vores flotte indretning, udendørs siddepladser i solen og lækre udvalg af økologisk kaffe, friskpresset juice, og hjemmelavede specialiteter, kan du give dine gæster en uforglemmelig oplevelse.")}
+            detailsThree={t("Uanset om det drejer sig om en produktlancering, en netværksbegivenhed eller andet, kan vi skræddersy arrangementet til dine behov. Vi tilbyder muligheden for at reservere hele caféen og vores dedikerede personale sørger for, at alt forløber glat. Vi kan desuden arrangere specialmenuer, der passer til dit event, med tanke for dit brands identitet.")}
+            btnText="Læs mere om event"
+          />
+          <Card
+            image="catering.webp"
+            alt="brown colored illustration with whole and sliced lemons"
+            loading="lazy"
+            bgColor="bg-highlight"
+            title={t("Catering")}
+            subtitle={t("Catering med kærlighed og kvalitet")}
+            description={t("Bestil morgenmad, frokost eller kagebord til din næste sammenkomst – lavet med omtanke.")}
+            popUpTitle={t("Catering")}
+            subPopUpTitle={t("Lad os tage os af maden – så du kan tage dig af gæsterne.")}
+            detailsOne={t("Hos Kær Kaffebar tilbyder vi catering til både private og professionelle arrangementer, store som små. Uanset om du planlægger en fødselsdag, et firmaevent, en reception eller et møde, står vi klar med smagfulde løsninger, der passer perfekt til anledningen.")}
+            detailsTwo={t("Vi laver alt fra friskbagte kager og brød til lette anretninger, brunch, frokost og specialkaffe. Vores retter er lavet med kærlighed og omtanke – og vi bruger friske, økologiske råvarer, hvor det er muligt.")}
+            detailsThree={t("Har du særlige ønsker eller behov? Vi skræddersyr gerne en menu, der matcher dine præferencer og dit arrangement – både i smag og stil.")}
+            btnText="Læs mere om catering"
+          />
+          <Card alt="små tærter" image="small-cakes.webp" loading="lazy" bgColor="bg-highlight" title={t("Bestil kage")} subtitle={t("Bestil hjemmelavede kager til enhver lejlighed")} description={t("Bryllup, fødselsdage eller bare fordi - vi bager med smag og stil")} popUpTitle={t("Kage og bestilling")} subPopUpTitle={t("Skal der lidt ekstra sødt på bordet?")} detailsOne={t("Bestil en eller flere af vores populære hjemmebagte kager til din fest eller fejring.")} detailsTwo={t("Vi bager efter sæson og tilbyder alt fra klassiske favoritter til unikke specialiteter.")} btnText="Læs mere om bestilling" />
+        </div>
+
+        <!-- Venstre fade -->
+        <div id="leftFade" class="transition-opacity duration-300 pointer-events-none absolute top-0 left-0 h-full w-16 bg-gradient-to-r from-highlight to-transparent z-10 hidden"></div>
+
+        <!-- Højre fade -->
+        <div id="rightFade" class="transition-opacity duration-300 pointer-events-none absolute top-0 right-0 h-full w-16 bg-gradient-to-l from-highlight to-transparent z-10"></div>
+      </div>
+    </section>
+    <div class="lg:grid lg:grid-cols-[1fr_minmax(400px,50%)_minmax(300px,40%)_1fr] gap-large">
       <section class="col-start-3 col-end-4" id="Form">
         <Form />
       </section>
     </div>
   </main>
 </Layout>
+
+<script>
+  const scrollContainer = document.getElementById("galleryScroll");
+
+  //defineret frem og tilbage knapper
+  const backBtnMobile = document.getElementById("backBtnMobile");
+  const nextBtnMobile = document.getElementById("nextBtnMobile");
+  const backBtnDesktop = document.getElementById("backBtnDesktop");
+  const nextBtnDesktop = document.getElementById("nextBtnDesktop");
+
+  //hvor meget skal der scrolles
+  const scrollAmount = 330;
+
+  //scroll frem funktion
+  function scrollNext() {
+    scrollContainer.scrollBy({ left: scrollAmount, behavior: "smooth" });
+  }
+
+  //scroll tilbage funktion
+  function scrollBack() {
+    scrollContainer.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+  }
+
+  //hvis der klikkes på nextBtn skal der scrolles frem
+  if (nextBtnMobile) nextBtnMobile.addEventListener("click", scrollNext);
+  if (nextBtnDesktop) nextBtnDesktop.addEventListener("click", scrollNext);
+
+  //hvis der klikkes på backBtn skal der scrolles tilbage
+  if (backBtnMobile) backBtnMobile.addEventListener("click", scrollBack);
+  if (backBtnDesktop) backBtnDesktop.addEventListener("click", scrollBack);
+
+  //defineret venstre og højre fade
+  const leftFade = document.getElementById("leftFade");
+  const rightFade = document.getElementById("rightFade");
+
+  function updateFades() {
+    const scrollLeft = scrollContainer.scrollLeft;
+    const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+
+    // Vis venstre fade hvis vi IKKE er helt til venstre
+    if (scrollLeft > 0) {
+      leftFade.classList.remove("hidden");
+    } else {
+      leftFade.classList.add("hidden");
+    }
+
+    // Vis højre fade hvis vi IKKE er helt til højre
+    if (scrollLeft < maxScrollLeft - 1) {
+      rightFade.classList.remove("hidden");
+    } else {
+      rightFade.classList.add("hidden");
+    }
+  }
+
+  // Opdater ved scroll og ved load
+  scrollContainer.addEventListener("scroll", updateFades);
+  window.addEventListener("load", updateFades);
+</script>
