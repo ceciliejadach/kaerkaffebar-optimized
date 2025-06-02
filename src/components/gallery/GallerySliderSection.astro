@@ -42,16 +42,23 @@ import MiniTarts from "../../assets/img/mini-tarts-closeup.webp";
         <img src={ForwardArrow.src} alt="næste" width="28" height="28" loading="lazy" />
       </div>
     </div>
-    <div class="gallery">
-      <div id="galleryScroll" class="flex overflow-x-scroll h-[400px] gap-default">
-        <GalleryCard src={CheesseCake} alt="cheesecake" />
-        <GalleryCard src={SmoerrebroedCloseup} alt="smørrebrød" />
-        <GalleryCard src={LatteArt} alt="latte art" />
-        <GalleryCard src={MakingIceCoffee} alt="der laves iskaffe" />
-        <GalleryCard src={SourdoughBuns} alt="surdejsboller" />
-        <GalleryCard src={OutsideEspressoSign} alt="billede udefra af Kær Kaffebar's rude" />
-        <GalleryCard src={MiniTarts} alt="minitærter" />
+    <div class="relative">
+      <div class="gallery">
+        <div id="galleryScroll" class="flex overflow-x-scroll h-[400px] gap-default">
+          <GalleryCard src={CheesseCake} alt="cheesecake" />
+          <GalleryCard src={SmoerrebroedCloseup} alt="smørrebrød" />
+          <GalleryCard src={LatteArt} alt="latte art" />
+          <GalleryCard src={MakingIceCoffee} alt="der laves iskaffe" />
+          <GalleryCard src={SourdoughBuns} alt="surdejsboller" />
+          <GalleryCard src={OutsideEspressoSign} alt="billede udefra af Kær Kaffebar's rude" />
+          <GalleryCard src={MiniTarts} alt="minitærter" />
+        </div>
       </div>
+      <!-- Venstre fade -->
+      <div id="leftFade" class="transition-opacity duration-300 pointer-events-none absolute top-0 left-0 h-full w-16 bg-gradient-to-r from-primary to-transparent z-10 hidden"></div>
+
+      <!-- Højre fade -->
+      <div id="rightFade" class="transition-opacity duration-300 pointer-events-none absolute top-0 right-0 h-full w-16 bg-gradient-to-l from-primary to-transparent z-10"></div>
     </div>
   </div>
 </div>
@@ -79,4 +86,31 @@ import MiniTarts from "../../assets/img/mini-tarts-closeup.webp";
   if (backBtnMobile) backBtnMobile.addEventListener("click", scrollBack);
   if (nextBtnDesktop) nextBtnDesktop.addEventListener("click", scrollNext);
   if (backBtnDesktop) backBtnDesktop.addEventListener("click", scrollBack);
+
+  //defineret venstre og højre fade
+  const leftFade = document.getElementById("leftFade");
+  const rightFade = document.getElementById("rightFade");
+
+  function updateFades() {
+    const scrollLeft = scrollContainer.scrollLeft;
+    const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+
+    // Vis venstre fade hvis vi IKKE er helt til venstre
+    if (scrollLeft > 0) {
+      leftFade.classList.remove("hidden");
+    } else {
+      leftFade.classList.add("hidden");
+    }
+
+    // Vis højre fade hvis vi IKKE er helt til højre
+    if (scrollLeft < maxScrollLeft - 1) {
+      rightFade.classList.remove("hidden");
+    } else {
+      rightFade.classList.add("hidden");
+    }
+  }
+
+  // Opdater ved scroll og ved load
+  scrollContainer.addEventListener("scroll", updateFades);
+  window.addEventListener("load", updateFades);
 </script>
