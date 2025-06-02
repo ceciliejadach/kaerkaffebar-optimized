@@ -35,11 +35,12 @@ import ColdDrinks from "../assets/illustrations/blue/cold-drink.svg";
     <section class="md:max-w-[1000px] md:mx-auto sticky top-[100px] md:top-[110px] z-20">
       <Readline />
     </section>
+    <DietIndicators />
     <div class="mt-large">
       <Image class="mx-auto md:mb-large h-[80px] w-[80px]" src={PancakeIllustration} alt={t("pandekage illustration")} loading="eager" />
-      <div class="grid gap-extra-large md:gap-negative mt-small md:mt-large md:max-w-[1000px] md:mx-auto">
+      <div class="grid gap-extra-large mt-small md:mt-large md:max-w-[1000px] md:mx-auto">
         <section class="grid gap-extra-large md:gap-negative md:grid-cols-2">
-          <section class="grid gap-default md:grid-rows-[0.1fr_0.5fr_auto] md:gap-extra-large" id="brunch">
+          <section class="grid gap-default md:grid-rows-[0.1fr_0.5fr_auto] md:gap-extra-large scroll-mt-[200px]" id="brunch">
             <header class="grid justify-center gap-default md:justify-start text-center">
               <CategoryHeadline headline={t("Brunch")} />
               <div class="grid justify-center md:justify-start">
@@ -83,7 +84,7 @@ import ColdDrinks from "../assets/illustrations/blue/cold-drink.svg";
             </section>
           </section>
           <div class="grid gap-extra-large md:gap-negative">
-            <section class="grid gap-default" id="vafler">
+            <section class="grid gap-default scroll-mt-[200px]" id="vafler">
               <div class="grid justify-center gap-default md:justify-start md:gap-medium">
                 <CategoryHeadline headline={t("Vafler")} />
               </div>
@@ -106,7 +107,7 @@ import ColdDrinks from "../assets/illustrations/blue/cold-drink.svg";
                 </li>
               </ul>
             </section>
-            <section class="grid gap-default" id="bowls">
+            <section class="grid gap-default scroll-mt-[200px]" id="bowls">
               <header class="grid justify-center gap-default md:justify-start md:gap-medium">
                 <CategoryHeadline headline={t("Bowls")} />
               </header>
@@ -144,8 +145,8 @@ import ColdDrinks from "../assets/illustrations/blue/cold-drink.svg";
 
       <div class="mt-negative">
         <Image class="mx-auto md:mb-large h-[80px] w-[80px]" src={CroissantIllustration} alt={t("croissant illustration")} loading="lazy" />
-        <div class="grid gap-extra-large mt-small md:mt-large md:gap-negative md:grid-cols-2">
-          <section class="grid gap-default" id="broed">
+        <div class="grid gap-extra-large mt-small md:mt-large md:max-w-[1000px] md:gap-negative md:grid-cols-2 md:mx-auto">
+          <section class="grid gap-default scroll-mt-[200px]" id="broed">
             <header class="grid justify-center gap-default md:justify-start">
               <CategoryHeadline headline={t("Brød og pålæg")} illustration={CroissantIllustration} alt={t("croissant")} width={60} height={60} />
             </header>
@@ -181,11 +182,11 @@ import ColdDrinks from "../assets/illustrations/blue/cold-drink.svg";
               </section>
             </ul>
           </section>
-          <section class="grid gap-default md:grid-rows-[0.1fr_auto]" id="bagvaerk">
-            <header class="grid justify-center gap-default md:justify-start h-fit">
+          <section class="grid gap-default md:grid-rows-[0.1fr_auto] scroll-mt-[200px]" id="bagvaerk">
+            <header class="grid justify-center gap-default md:justify-start">
               <CategoryHeadline headline={t("Bagværk")} />
-              <i class="text-center md:text-left"><Description content={t("Dagens bagværk varierer. Se montre for dagens udvalg.")} /></i>
             </header>
+            <i class="text-center md:text-left"><Description content={t("Dagens bagværk varierer. Se montre for dagens udvalg.")} /></i>
             <ul class="grid gap-medium">
               <li>
                 <ProductHeadline variant="primary" headline={t("Croissant")} price={t("29 kr")} />
@@ -220,8 +221,8 @@ import ColdDrinks from "../assets/illustrations/blue/cold-drink.svg";
       </div>
       <section class="mt-negative">
         <Image class="mx-auto md:mb-large h-[90px] w-[90px]" src={SmoerrebroedIllustration} alt={t("smørrebrød illustration")} loading="lazy" />
-        <div class="grid gap-extra-large md:gap-negative md:grid-cols-2">
-          <section class="grid gap-default md:grid-rows-[0.1fr_0.5fr_0.2fr_auto] md:gap-extra-large" id="smoerrebroed">
+        <div class="grid gap-extra-large md:gap-negative md:grid-cols-2 md:max-w-[1000px] md:mx-auto">
+          <section class="grid gap-default md:grid-rows-[0.1fr_0.5fr_0.2fr_auto] md:gap-extra-large scroll-mt-[200px]" id="smoerrebroed">
             <header class="grid justify-center gap-default md:justify-start">
               <CategoryHeadline headline={t("Smørrebrød")} illustration={SmoerrebroedIllustration} alt={t("smørrebrød")} width={60} height={60} />
               <div class="grid justify-center md:justify-start">
@@ -265,7 +266,7 @@ import ColdDrinks from "../assets/illustrations/blue/cold-drink.svg";
             </div>
           </section>
           <div class="grid gap-extra-large">
-            <section class="grid gap-default" id="sandwich">
+            <section class="grid gap-default scroll-mt-[200px]" id="sandwich">
               <header class="grid justify-center gap-default md:justify-start">
                 <CategoryHeadline headline={t("Sandwich")} />
               </header>
@@ -284,7 +285,7 @@ import ColdDrinks from "../assets/illustrations/blue/cold-drink.svg";
                 </li>
               </ul>
             </section>
-            <section class="grid gap-default" id="toast">
+            <section class="grid gap-default scroll-mt-[200px]" id="toast">
               <header class="grid justify-center gap-default md:justify-start">
                 <CategoryHeadline headline={t("Grillet toast")} />
               </header>
@@ -295,7 +296,7 @@ import ColdDrinks from "../assets/illustrations/blue/cold-drink.svg";
                 </li>
               </ul>
             </section>
-            <section class="grid gap-default" id="salat">
+            <section class="grid gap-default scroll-mt-[200px]" id="salat">
               <header class="grid justify-center gap-default md:justify-start">
                 <CategoryHeadline headline={t("Salat")} />
               </header>
@@ -312,8 +313,8 @@ import ColdDrinks from "../assets/illustrations/blue/cold-drink.svg";
 
       <section class="mt-negative">
         <Image class="mx-auto md:mb-large h-[80px] w-[80px]" src={CoffeeMug} alt={t("kaffekop illustration")} loading="lazy" />
-        <div class="grid gap-extra-large md:gap-negative md:grid-cols-2">
-          <section class="grid gap-default md:grid-rows-[0.1fr_0.6fr]" id="kaffe">
+        <div class="grid gap-extra-large md:gap-negative md:grid-cols-2 md:max-w-[1000px]">
+          <section class="grid gap-default md:grid-rows-[0.1fr_0.6fr] scroll-mt-[200px] md:mx-auto" id="kaffe">
             <header class="grid justify-center gap-default md:justify-start">
               <CategoryHeadline headline={t("Kaffe")} />
             </header>
@@ -345,7 +346,7 @@ import ColdDrinks from "../assets/illustrations/blue/cold-drink.svg";
               </li>
             </ul>
           </section>
-          <section class="grid gap-default md:grid-rows-[0.1fr_0.6fr]" id="varme-drikke">
+          <section class="grid gap-default md:grid-rows-[0.1fr_0.6fr] scroll-mt-[200px]" id="varme-drikke">
             <header class="grid justify-center gap-default md:justify-start">
               <CategoryHeadline headline={t("Varme drikke")} />
             </header>
@@ -373,8 +374,8 @@ import ColdDrinks from "../assets/illustrations/blue/cold-drink.svg";
 
     <section class="mt-negative">
       <Image class="mx-auto md:mb-large h-[80px] w-[80px]" src={ColdDrinks} alt={t("kold drikkevare illustration")} loading="lazy" />
-      <div class="grid gap-extra-large md:gap-negative md:grid-cols-2">
-        <section class="grid gap-default md:grid-rows-[0.1fr_auto]" id="drikkevarer">
+      <div class="grid gap-extra-large md:gap-negative md:grid-cols-2 md:max-w-[1000px] md:mx-auto">
+        <section class="grid gap-default md:grid-rows-[0.1fr_auto] scroll-mt-[200px]" id="drikkevarer">
           <header class="grid justify-center gap-default md:justify-start">
             <CategoryHeadline headline={t("Kolde drikke")} illustration={ColdDrinks} alt={t("kold drink")} width={50} height={50} />
           </header>
@@ -417,7 +418,7 @@ import ColdDrinks from "../assets/illustrations/blue/cold-drink.svg";
             </li>
           </ul>
         </section>
-        <section class="grid gap-default md:grid-rows-[0.1fr_0.5fr]" id="hjemmelavet">
+        <section class="grid gap-default md:grid-rows-[0.1fr_0.5fr] scroll-mt-[200px]" id="hjemmelavet">
           <header class="grid justify-center gap-default md:justify-start">
             <CategoryHeadline headline={t("Hjemmelavet")} />
           </header>
@@ -448,7 +449,6 @@ import ColdDrinks from "../assets/illustrations/blue/cold-drink.svg";
         </section>
       </div>
     </section>
-    <DietIndicators />
   </main>
   <aside id="coffeesection" class="m-margin md:my-section fade-section space-y-section">
     <!-- Kær Kaffebaren's kaffe section -->
