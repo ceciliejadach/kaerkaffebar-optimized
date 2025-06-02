@@ -115,7 +115,7 @@ const requestSuccess = Astro.url.searchParams.get("requestSend") || false;
     <fieldset class="flex flex-col gap-default">
       <legend class="sr-only">{t("Tid og Dato")}</legend>
 
-      <label class="mb-smal flex flex-col lg:w-1/2 gap-small">
+      <label for="time" class="mb-smal flex flex-col lg:w-1/2 gap-small">
         <p class="font-bold">{t("Tid*")}</p>
         <input
           id="time"
@@ -131,7 +131,7 @@ const requestSuccess = Astro.url.searchParams.get("requestSend") || false;
       </label>
       <span id="timeError" class="error-message hidden" role="alert"></span>
 
-      <label class="mb-smal flex flex-col lg:w-1/2 gap-small"
+      <label for="date" class="mb-smal flex flex-col lg:w-1/2 gap-small"
         ><p class="font-bold">{t("Dato*")}</p>
         <input
           id="date"
@@ -145,7 +145,7 @@ const requestSuccess = Astro.url.searchParams.get("requestSend") || false;
         />
       </label>
       <span id="dateError" class="error-message hidden" role="alert"></span>
-      <label class="mb-smal flex flex-col lg:w-1/2 gap-small"
+      <label for="guest_count" class="mb-smal flex flex-col lg:w-1/2 gap-small"
         ><p class="font-bold">{t("Antal gæster*")}</p>
         <input
           id="guest_count"
@@ -258,10 +258,35 @@ const requestSuccess = Astro.url.searchParams.get("requestSend") || false;
     function guestCountError(field, span) {
       if (field.validity.valueMissing) {
         span.textContent = "Antal gæster er påkrævet";
-      } else if (field.validity.valueUnder) {
+      } else if (field.validity.rangeUnderflow) {
         span.textContent = "Mindst 10 gæster";
-      } else if (field.validity.valueOver) {
-        span.textContent = "Vi kan maks tag imod 25 gæster";
+      } else if (field.validity.rangeOverflow) {
+        span.textContent = "Vi kan maks tage imod 25 gæster";
+      } else {
+        span.textContent = field.validationMessage;
+      }
+    }
+
+    // definere en funktion til at vise fejl til tid
+    function timeError(field, span) {
+      if (field.validity.valueMissing) {
+        span.textContent = "Vælg venligst et tidspunkt";
+      } else if (
+        field.validity.rangeUnderflow ||
+        field.validity.rangeOverflow
+      ) {
+        span.textContent = "Tidsrum kan kun være mellem 10:00 og 16:00";
+      } else {
+        span.textContent = field.validationMessage;
+      }
+    }
+
+    // definere en funktion til at vise fejl i dato
+    function dateError(field, span) {
+      if (field.validity.valueMissing) {
+        span.textContent = "Vælg venligst en dato";
+      } else if (field.validity.beforeDateslot) {
+        span.textContent = "Datoen er ikke muligt";
       } else {
         span.textContent = field.validationMessage;
       }
@@ -287,19 +312,25 @@ const requestSuccess = Astro.url.searchParams.get("requestSend") || false;
           // vi bruger aria-invalid for at gøre det mere a11y venlig
           field.setAttribute("aria-invalid", "true");
           span.classList.remove("hidden");
-          // error besked: hvad brugeren skal gøre/mangler
-          span.textContent = field.validationMessage;
+
+          if (id === "guest_count") {
+            guestCountError(field, span);
+          } else if (id === "time") {
+            timeError(field, span);
+          } else if (id === "date") {
+            dateError(field, span);
+          } else if (id === "phoneNumber" && field.validity.patternMismatch) {
+            span.textContent = "Ugyldigt telefonnummer";
+          } else {
+            // error besked: hvad brugeren skal gøre/mangler : bruger vores property validationMessage
+            span.textContent = field.validationMessage;
+          }
+
           //ellers valider
         } else {
           field.classList.remove("invalid");
           field.setAttribute("aria-invalid", "false");
           span.classList.add("hidden");
-        }
-        // Antal Gæster Check
-        if (id === "guest_count") {
-          guestCountError(field, span);
-        } else {
-          span.textContent = field.validationMessage;
         }
       });
 
@@ -317,6 +348,7 @@ const requestSuccess = Astro.url.searchParams.get("requestSend") || false;
       field.addEventListener("input", () => {
         // Fejlen kommer først frem efter førsøg på at brugeren klikker submit
         if (!submitted) return;
+
         // Gyldig input felt får så valid CSS styling & aria-invalid er false.
         if (field.checkValidity()) {
           field.classList.remove("invalid");
@@ -328,8 +360,19 @@ const requestSuccess = Astro.url.searchParams.get("requestSend") || false;
           field.classList.add("invalid");
           field.setAttribute("aria-invalid", "true");
           span.classList.remove("hidden");
-          // error besked: hvad brugeren skal gøre/mangler : bruger vores property validationMessage
-          span.textContent = field.validationMessage;
+
+          if (id === "guest_count") {
+            guestCountError(field, span);
+          } else if (id === "time") {
+            timeError(field, span);
+          } else if (id === "date") {
+            dateError(field, span);
+          } else if (id === "phoneNumber" && field.validity.patternMismatch) {
+            span.textContent = "Ugyldigt telefonnummer";
+          } else {
+            // error besked: hvad brugeren skal gøre/mangler : bruger vores property validationMessage
+            span.textContent = field.validationMessage;
+          }
         }
       });
     });
