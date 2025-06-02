@@ -10,6 +10,10 @@ import { Image } from "astro:assets";
 
 //Billeder
 import ReadlineLink from "../components/menu/ReadlineLink.astro";
+import SmallCakes from "../assets/img/small-cakes.webp";
+import ArrangementCardImage from "../assets/img/arrangement.webp";
+import EventCardImage from "../assets/img/event.webp";
+import CateringCardImage from "../assets/img/catering.webp";
 
 //arrow icons
 import ForwardArrow from "../assets/icons/forward-arrow-icon.svg";
@@ -73,9 +77,9 @@ import BackwardArrow from "../assets/icons/back-arrow-icon.svg";
       </div>
       <div class="relative">
         <div id="galleryScroll" class="relative h-[500px] md:h-[600px] flex overflow-x-scroll gap-default items-stretch">
-          <Card image="arrangement.webp" alt="croissanter" loading="loading" bgColor="bg-neutral-3" title={t("Arrangement")} subtitle={t("Hold dit næste arrangement hos os")} description={t("Små selskaber i hyggelige rammer – perfekt til fødselsdage, babyshowers og bogklubber.")} popUpTitle={t("Arrangement")} subPopUpTitle={t("Hvis du leder efter det ideelle sted til dit næste arrangement, behøver du ikke lede længere end Kær Kaffebar.")} detailsOne={t("Send en forespørgelse om arrangement og så vil vi kontakte dig angående flere detaljer.")} detailsTwo={t("Lad os sammen skabe et mindeværdigt arrangement, som dine gæster vil tale om i lang tid fremover!")} btnText="Læs mere om arrangement" />
+          <Card image={ArrangementCardImage} alt="croissanter" loading="loading" bgColor="bg-neutral-3" title={t("Arrangement")} subtitle={t("Hold dit næste arrangement hos os")} description={t("Små selskaber i hyggelige rammer – perfekt til fødselsdage, babyshowers og bogklubber.")} popUpTitle={t("Arrangement")} subPopUpTitle={t("Hvis du leder efter det ideelle sted til dit næste arrangement, behøver du ikke lede længere end Kær Kaffebar.")} detailsOne={t("Send en forespørgelse om arrangement og så vil vi kontakte dig angående flere detaljer.")} detailsTwo={t("Lad os sammen skabe et mindeværdigt arrangement, som dine gæster vil tale om i lang tid fremover!")} btnText="Læs mere om arrangement" />
           <Card
-            image="event.webp"
+            image={EventCardImage}
             alt="Kær Kaffebar skilt"
             loading="loading"
             bgColor="bg-highlight"
@@ -90,7 +94,7 @@ import BackwardArrow from "../assets/icons/back-arrow-icon.svg";
             btnText="Læs mere om event"
           />
           <Card
-            image="catering.webp"
+            image={CateringCardImage}
             alt="brown colored illustration with whole and sliced lemons"
             loading="lazy"
             bgColor="bg-highlight"
@@ -104,7 +108,7 @@ import BackwardArrow from "../assets/icons/back-arrow-icon.svg";
             detailsThree={t("Har du særlige ønsker eller behov? Vi skræddersyr gerne en menu, der matcher dine præferencer og dit arrangement – både i smag og stil.")}
             btnText="Læs mere om catering"
           />
-          <Card alt="små tærter" image="small-cakes.webp" loading="lazy" bgColor="bg-highlight" title={t("Bestil kage")} subtitle={t("Bestil hjemmelavede kager til enhver lejlighed")} description={t("Bryllup, fødselsdage eller bare fordi - vi bager med smag og stil")} popUpTitle={t("Kage og bestilling")} subPopUpTitle={t("Skal der lidt ekstra sødt på bordet?")} detailsOne={t("Bestil en eller flere af vores populære hjemmebagte kager til din fest eller fejring.")} detailsTwo={t("Vi bager efter sæson og tilbyder alt fra klassiske favoritter til unikke specialiteter.")} btnText="Læs mere om bestilling" />
+          <Card alt="små tærter" image={SmallCakes} loading="lazy" bgColor="bg-highlight" title={t("Bestil kage")} subtitle={t("Bestil hjemmelavede kager til enhver lejlighed")} description={t("Bryllup, fødselsdage eller bare fordi - vi bager med smag og stil")} popUpTitle={t("Kage og bestilling")} subPopUpTitle={t("Skal der lidt ekstra sødt på bordet?")} detailsOne={t("Bestil en eller flere af vores populære hjemmebagte kager til din fest eller fejring.")} detailsTwo={t("Vi bager efter sæson og tilbyder alt fra klassiske favoritter til unikke specialiteter.")} btnText="Læs mere om bestilling" />
         </div>
 
         <!-- Venstre fade -->

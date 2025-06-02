@@ -37,8 +37,8 @@ const popUpId = `popup-${popUpTitle}`;
         {description}
       </p>
     </div>
-    <div class={`relative h-[200px] w-full bg-cover bg-center rounded-default shrink-0`} style={{ backgroundImage: `url("../public/img/${image}")` }} aria-label={alt}>
-      <span class="absolute bottom-3 left-3 z-10">
+    <div class={`relative h-[200px] w-full bg-cover bg-center rounded-default shrink-0`} style={`background-image: url(${image.src});`} aria-label={alt}>
+      <span class="absolute bottom-2 left-2 z-10">
         <Button ariaLabel={t("Læs mere")} type="button" data-open-popup={popUpId} element={false}>{btnText}</Button>
       </span>
     </div>
