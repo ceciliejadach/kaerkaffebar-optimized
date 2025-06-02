@@ -72,7 +72,7 @@ import BackwardArrow from "../assets/icons/back-arrow-icon.svg";
         </button>
       </div>
       <div class="relative">
-        <div id="galleryScroll" class="relative h-[500px] md:h-[700px] flex overflow-x-scroll gap-default items-stretch">
+        <div id="galleryScroll" class="relative h-[500px] md:h-[600px] flex overflow-x-scroll gap-default items-stretch">
           <Card image="arrangement.webp" alt="croissanter" loading="loading" bgColor="bg-neutral-3" title={t("Arrangement")} subtitle={t("Hold dit næste arrangement hos os")} description={t("Små selskaber i hyggelige rammer – perfekt til fødselsdage, babyshowers og bogklubber.")} popUpTitle={t("Arrangement")} subPopUpTitle={t("Hvis du leder efter det ideelle sted til dit næste arrangement, behøver du ikke lede længere end Kær Kaffebar.")} detailsOne={t("Send en forespørgelse om arrangement og så vil vi kontakte dig angående flere detaljer.")} detailsTwo={t("Lad os sammen skabe et mindeværdigt arrangement, som dine gæster vil tale om i lang tid fremover!")} btnText="Læs mere om arrangement" />
           <Card
             image="event.webp"
@@ -108,18 +108,21 @@ import BackwardArrow from "../assets/icons/back-arrow-icon.svg";
         </div>
 
         <!-- Venstre fade -->
-        <div id="leftFade" class="transition-opacity duration-300 pointer-events-none absolute top-0 left-0 h-full w-16 bg-gradient-to-r from-highlight to-transparent z-10 hidden"></div>
+        <div id="leftFade" class="transition-opacity duration-300 pointer-events-none absolute top-0 left-0 h-full w-16 bg-gradient-to-r from-primary to-transparent z-10 hidden"></div>
 
         <!-- Højre fade -->
-        <div id="rightFade" class="transition-opacity duration-300 pointer-events-none absolute top-0 right-0 h-full w-16 bg-gradient-to-l from-highlight to-transparent z-10"></div>
+        <div id="rightFade" class="transition-opacity duration-300 pointer-events-none absolute top-0 right-0 h-full w-16 bg-gradient-to-l from-primary to-transparent z-10"></div>
       </div>
     </section>
-    <div class="lg:grid lg:grid-cols-[1fr_minmax(400px,50%)_minmax(300px,40%)_1fr] gap-large">
-      <section class="col-start-3 col-end-4" id="Form">
-        <Form />
-      </section>
-    </div>
   </main>
+  <div class="bg-neutral-2/40 p-default rounded-t-default md:rounded-t-large pt-5 md:pt-10 mt-[-100px] md:mt-[-110px]">
+    <h2 class="text-neutral-1 font-body-text text-header-2 text-left leading-height-header-2 sm:text-center">
+      {t("Udfyld formular og send forespørgelse")}
+    </h2>
+    <section class="max-w-[450px] mx-auto" id="Form">
+      <Form />
+    </section>
+  </div>
 </Layout>
 
 <script>
