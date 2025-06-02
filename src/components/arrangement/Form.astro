@@ -15,94 +15,47 @@ const requestSuccess = Astro.url.searchParams.get("requestSend") || false;
 ---
 
 <article>
-  <PopUp
-    show={requestSuccess}
-    id="success-popup"
-    textStyle="text-center"
-    aria-live="polite"
-    role="status"
-  >
+  <PopUp show={requestSuccess} id="success-popup" textStyle="text-center" aria-live="polite" role="status">
     <h3>{t("Tak for din forespørgsel hos Kær Kaffebar")}</h3>
     <p>
-      {
-        t(
-          "Vi glæder os til at byde dig velkommen. Du vil høre fra os tilbage hurtigst muligt."
-        )
-      }
+      {t("Vi glæder os til at byde dig velkommen. Du vil høre fra os tilbage hurtigst muligt.")}
     </p>
   </PopUp>
   <!-- novalidate: fortæller browseren at vi selv gerne vil styre validering -->
-  <form
-    id="requestForm"
-    method="POST"
-    action="/api/request"
-    class="bg-primary-2 rounded-default px-medium py-large md:p-large flex flex-col gap-large pin-skadow"
-    novalidate
-  >
-    <h3
-      class="text-neutral-1 font-body-text text-header-3 leading-height-header-3"
-    >
-      {
-        t(
-          "Udfyld formular og send forespørgelse til enten arrangement, event eller catering"
-        )
-      }
-    </h3>
+  <form id="requestForm" method="POST" action="/api/request" class="py-large flex flex-col gap-large" novalidate>
+    <!-- <h2 class="text-neutral-1 font-body-text text-header-2 leading-height-header-2">
+      {t("Udfyld formular og send forespørgelse")}
+    </h2> -->
 
     <fieldset class="flex flex-col gap-default">
       <legend class="sr-only">{t("Personlig information")}</legend>
 
       <!-- Fulde Navn -->
-      <label for="fullName" class="mb-smal flex flex-col gap-small"><p class="font-bold">{t("Fulde Navn")}</p>
-        
-        <input
-        id="fullName"
-        name="fullName"
-        type="text"
-        required
-        aria-errormessage="fullNameError"
-        aria-invalid="false"
-        class="border-2 border-faded-highlight rounded-sm p-2 bg-white"
-        />
+      <label for="fullName" class="mb-smal flex flex-col gap-small"
+        ><p class="font-bold">{t("Fulde navn*")}</p>
+
+        <input id="fullName" name="fullName" type="text" required aria-errormessage="fullNameError" aria-invalid="false" class="border-1 border-faded-highlight rounded-sm p-2 bg-white" />
       </label>
       <span id="fullNameError" class="error-message hidden" role="alert"></span>
 
       <!-- Email -->
-      <label for="email" class="mb-smal flex flex-col gap-small"><p class="font-bold">{t("Email")}</p>
-        <input
-        id="email"
-        name="email"
-        type="email"
-        required
-        aria-errormessage="emailError"
-        aria-invalid="false"
-        class="border-2 border-faded-highlight rounded-sm p-2 bg-white"
-        />
+      <label for="email" class="mb-smal flex flex-col gap-small"
+        ><p class="font-bold">{t("Email*")}</p>
+        <input id="email" name="email" type="email" required aria-errormessage="emailError" aria-invalid="false" class="border-1 border-faded-highlight rounded-sm p-2 bg-white" />
       </label>
       <span id="emailError" class="error-message hidden" role="alert"></span>
 
       <!-- Telefonnummer -->
       <label for="phoneNumber" class="mb-smal flex flex-col gap-small"
-        ><p class="font-bold">{t("Telefonnummer")}</p>
-        <input
-        id="phoneNumber"
-        name="phoneNumber"
-        type="tel"
-        required
-        pattern="[0-9+]{8,}"
-        aria-errormessage="phoneNumberError"
-        aria-invalid="false"
-        class="border-2 border-faded-highlight rounded-sm p-2 bg-white"
-        inputmode="numeric"
-        />
+        ><p class="font-bold">{t("Telefonnummer*")}</p>
+        <input id="phoneNumber" name="phoneNumber" type="tel" required pattern="[0-9+]{8,}" aria-errormessage="phoneNumberError" aria-invalid="false" class="border-1 border-faded-highlight rounded-sm p-2 bg-white" inputmode="numeric" />
       </label>
-      <span id="phoneNumberError" class="error-message hidden" role="alert"
-      ></span>
+      <span id="phoneNumberError" class="error-message hidden" role="alert"></span>
     </fieldset>
 
     <!-- Andledning  -->
     <fieldset class="flex flex-wrap flex-col gap-default">
-      <legend class="text-header-3">{t("Anledning")}</legend>
+      <legend class="text-header-3">{t("Anledning*")}</legend>
       <RadioButton Occasion={t("Arrangement")} />
       <RadioButton Occasion={t("Catering")} />
       <RadioButton Occasion={t("Event")} />
@@ -111,35 +64,17 @@ const requestSuccess = Astro.url.searchParams.get("requestSend") || false;
 
     <!-- Tid og dato  -->
     <fieldset class="flex flex-col gap-default">
-      <legend class="sr-only">{t("Tid og Dato")}</legend>
+      <legend class="sr-only">{t("Tid og Dato*")}</legend>
 
       <label class="mb-smal flex flex-col lg:w-1/2 gap-small">
-        <p class="font-bold">{t("Tid")}</p>
-        <input
-          id="time"
-          name="time"
-          type="time"
-          required
-          aria-errormessage="timeError"
-          aria-invalid="false"
-          class="border-2 border-faded-highlight rounded-sm p-2 bg-white"
-          min="10:00"
-          max="16:00"
-        />
+        <p class="font-bold">{t("Tid*")}</p>
+        <input id="time" name="time" type="time" required aria-errormessage="timeError" aria-invalid="false" class="border-1 border-faded-highlight rounded-sm p-2 bg-white" min="10:00" max="16:00" />
       </label>
       <span id="timeError" class="error-message hidden" role="alert"></span>
 
-      <label class="mb-smal flex flex-col lg:w-1/2 gap-small"><p class="font-bold">{t("Dato")}</p>
-        <input
-          id="date"
-          name="date"
-          type="date"
-          required
-          aria-errormessage="dateError"
-          aria-invalid="false"
-          class="border-2 border-faded-highlight rounded-sm p-2 bg-white"
-          min={new Date().toISOString().split("T")[0]}
-        />
+      <label class="mb-smal flex flex-col lg:w-1/2 gap-small"
+        ><p class="font-bold">{t("Dato*")}</p>
+        <input id="date" name="date" type="date" required aria-errormessage="dateError" aria-invalid="false" class="border-1 border-faded-highlight rounded-sm p-2 bg-white" min={new Date().toISOString().split("T")[0]} />
       </label>
       <span id="dateError" class="error-message hidden" role="alert"></span>
     </fieldset>
@@ -156,11 +91,7 @@ const requestSuccess = Astro.url.searchParams.get("requestSend") || false;
     <!-- Menu ønsker  -->
     <fieldset class="flex flex-wrap items-end gap-default">
       <legend class="text-header-3">{t("Ønsker til menuen")}</legend>
-      <Checkbox
-        Diet={t("Vegetarisk")}
-        Icon={Vegetarian}
-        aria-Label={t("Vegetarisk")}
-      />
+      <Checkbox Diet={t("Vegetarisk")} Icon={Vegetarian} aria-Label={t("Vegetarisk")} />
       <Checkbox Diet={t("Vegansk")} Icon={Vegan} aria-Label={t("Vegansk")} />
     </fieldset>
 
@@ -168,31 +99,16 @@ const requestSuccess = Astro.url.searchParams.get("requestSend") || false;
     <fieldset class="flex flex-col mb-smal font-bold gap-default">
       <legend class="text-paragraph">{t("Kommentar")}</legend>
       <label id="comment" for="comment" class="sr-only">{t("Kommentar")}</label>
-      <textarea
-        id="comment"
-        name="comment"
-        rows="4"
-        class="border-2 border-faded-highlight rounded-sm p-2 bg-white"
-        placeholder={t("Skriv dine kommentarer her...")}></textarea>
+      <textarea id="comment" name="comment" rows="4" class="border-1 border-faded-highlight rounded-sm p-2 bg-white" placeholder={t("Skriv dine kommentarer her...")}></textarea>
     </fieldset>
 
     <p class="font-body-text text-neutral-1 text-paragraph font-bold">
-      {
-        t(
-          "Obs: Hvis du har nogen spørgsmål eller bekymringer så kontakt os på 81 61 09 00"
-        )
-      }
+      {t("Obs: Hvis du har nogen spørgsmål eller bekymringer så kontakt os på 81 61 09 00")}
     </p>
-
-    <!-- Submit / Send Forespørgelse / check validering -->
-    <Button
-      type="submit"
-      showArrow={true}
-      variant="primary"
-      ariaLabel={t("Send forespørgelse")}
-    >
-      {t("Send forespørgelse")}</Button
-    >
+    <article class="flex justify-center">
+      <!-- Submit / Send Forespørgelse / check validering -->
+      <Button type="submit" showArrow={true} variant="primary" ariaLabel={t("Send forespørgelse")}> {t("Send forespørgelse")}</Button>
+    </article>
   </form>
 </article>
 
