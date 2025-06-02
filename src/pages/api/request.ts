@@ -19,6 +19,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     //getAll så vi kan få flere værdier. Former data til array
     diet: formData.getAll("diet"),
     date: formData.get("date"),
+    guest_count: formData.get("guest_count"),
     time: formData.get("time"),
     comment: formData.get("comment"),
   };
