@@ -15,13 +15,11 @@ const { event, popupId } = Astro.props;
 console.log("Cardevent:", event);
 ---
 
-<article
-  class="flex bg-highlight rounded-medium p-default gap-medium justify-between pin-skadow "
->
+<article class="flex bg-highlight rounded-medium p-default gap-medium justify-between pin-skadow">
   <p class="text-secondary text-label"><strong>{event.day} {event.date}</strong></p>
   <div>
     <p class="text-neutral-1 text-label"><strong>{event.club}</strong></p>
-    <div class="flex items-center gap-small">
+    <div class="flex items-start sm:items-center gap-small">
       <LocationIcon />
       <p class="text-neutral-1">{event.location}</p>
     </div>
