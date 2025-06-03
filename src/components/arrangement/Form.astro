@@ -32,49 +32,23 @@ const requestSuccess = Astro.url.searchParams.get("requestSend") || false;
 
       <!-- Fulde Navn -->
       <label for="fullName" class="mb-smal flex flex-col gap-small"
-        ><p class="font-bold">{t("Fulde Navn*")}</p>
+        ><p class="font-bold">{t("Fulde navn*")}</p>
 
-        <input
-          id="fullName"
-          name="fullName"
-          type="text"
-          required
-          aria-errormessage="fullNameError"
-          aria-invalid="false"
-          class="border-2 border-faded-highlight rounded-sm p-2 bg-white"
-        />
+        <input id="fullName" name="fullName" type="text" required aria-errormessage="fullNameError" aria-invalid="false" class="border-2 border-faded-highlight rounded-sm p-2 bg-white" />
       </label>
       <span id="fullNameError" class="error-message hidden" role="alert"></span>
 
       <!-- Email -->
       <label for="email" class="mb-smal flex flex-col gap-small"
         ><p class="font-bold">{t("Email*")}</p>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          required
-          aria-errormessage="emailError"
-          aria-invalid="false"
-          class="border-2 border-faded-highlight rounded-sm p-2 bg-white"
-        />
+        <input id="email" name="email" type="email" required aria-errormessage="emailError" aria-invalid="false" class="border-2 border-faded-highlight rounded-sm p-2 bg-white" />
       </label>
       <span id="emailError" class="error-message hidden" role="alert"></span>
 
       <!-- Telefonnummer -->
       <label for="phoneNumber" class="mb-smal flex flex-col gap-small"
         ><p class="font-bold">{t("Telefonnummer*")}</p>
-        <input
-          id="phoneNumber"
-          name="phoneNumber"
-          type="tel"
-          required
-          pattern="[0-9+]{8,}"
-          aria-errormessage="phoneNumberError"
-          aria-invalid="false"
-          class="border-2 border-faded-highlight rounded-sm p-2 bg-white"
-          inputmode="numeric"
-        />
+        <input id="phoneNumber" name="phoneNumber" type="tel" required pattern="[0-9+]{8,}" aria-errormessage="phoneNumberError" aria-invalid="false" class="border-2 border-faded-highlight rounded-sm p-2 bg-white" inputmode="numeric" />
       </label>
       <span id="phoneNumberError" class="error-message hidden" role="alert"></span>
     </fieldset>
@@ -94,50 +68,20 @@ const requestSuccess = Astro.url.searchParams.get("requestSend") || false;
 
       <label for="time" class="mb-smal flex flex-col lg:w-1/2 gap-small">
         <p class="font-bold">{t("Tid*")}</p>
-        <input
-          id="time"
-          name="time"
-          type="time"
-          required
-          aria-errormessage="timeError"
-          aria-invalid="false"
-          class="border-2 border-faded-highlight rounded-sm p-2 bg-white"
-          min="10:00"
-          max="16:00"
-        />
+        <input id="time" name="time" type="time" required aria-errormessage="timeError" aria-invalid="false" class="border-2 border-faded-highlight rounded-sm p-2 bg-white" min="10:00" max="16:00" />
       </label>
       <span id="timeError" class="error-message hidden" role="alert"></span>
 
       <label for="date" class="mb-smal flex flex-col lg:w-1/2 gap-small"
         ><p class="font-bold">{t("Dato*")}</p>
-        <input
-          id="date"
-          name="date"
-          type="date"
-          required
-          aria-errormessage="dateError"
-          aria-invalid="false"
-          class="border-2 border-faded-highlight rounded-sm p-2 bg-white"
-          min={new Date().toISOString().split("T")[0]}
-        />
+        <input id="date" name="date" type="date" required aria-errormessage="dateError" aria-invalid="false" class="border-2 border-faded-highlight rounded-sm p-2 bg-white" min={new Date().toISOString().split("T")[0]} />
       </label>
       <span id="dateError" class="error-message hidden" role="alert"></span>
       <label for="guest_count" class="mb-smal flex flex-col lg:w-1/2 gap-small"
         ><p class="font-bold">{t("Antal gæster*")}</p>
-        <input
-          id="guest_count"
-          name="number"
-          type="number"
-          required
-          aria-errormessage="guest_countError"
-          aria-invalid="false"
-          class="border-2 border-faded-highlight rounded-sm p-2 bg-white"
-          max="25"
-          min="10"
-        />
+        <input id="guest_count" name="number" type="number" required aria-errormessage="guest_countError" aria-invalid="false" class="border-2 border-faded-highlight rounded-sm p-2 bg-white" max="25" min="10" />
       </label>
-      <span id="guest_countError" class="error-message hidden" role="alert"
-      ></span>
+      <span id="guest_countError" class="error-message hidden" role="alert"></span>
     </fieldset>
 
     <!-- Allergier  -->
@@ -203,14 +147,7 @@ const requestSuccess = Astro.url.searchParams.get("requestSend") || false;
     let submitted = false;
 
     // Array af inputfelter som vi skal se på der skal valideres (vores id'er)
-    const fields = [
-      "fullName",
-      "email",
-      "phoneNumber",
-      "time",
-      "date",
-      "guest_count",
-    ];
+    const fields = ["fullName", "email", "phoneNumber", "time", "date", "guest_count"];
 
     // Antal gæster funktion hvor vi definere maks, mindst, og glemt at udfylde
     function guestCountError(field, span) {
@@ -229,10 +166,7 @@ const requestSuccess = Astro.url.searchParams.get("requestSend") || false;
     function timeError(field, span) {
       if (field.validity.valueMissing) {
         span.textContent = "Vælg venligst et tidspunkt";
-      } else if (
-        field.validity.rangeUnderflow ||
-        field.validity.rangeOverflow
-      ) {
+      } else if (field.validity.rangeUnderflow || field.validity.rangeOverflow) {
         span.textContent = "Tidsrum kan kun være mellem 10:00 og 16:00";
       } else {
         span.textContent = field.validationMessage;
