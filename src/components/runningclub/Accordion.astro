@@ -1,6 +1,9 @@
 ---
 const { items = [] } = Astro.props;
+import { t } from "astro-i18n";
+import { Image } from "astro:assets";
 import PlusIcon from "../../assets/icons/plus-icon.svg";
+import Map from "../../assets/img/map.webp";
 ---
 
 <dl class="w-full" id="accordion">
@@ -29,9 +32,18 @@ import PlusIcon from "../../assets/icons/plus-icon.svg";
           role="region"
           aria-labelledby={`accordion-header-${index}`}
         >
-          <p class="text-paragraph font-body-text leading-height-paragraph md:text-lg text-neutral-1">
-            {item.answer}
-          </p>
+          {item.answer ? (
+            <p class="text-paragraph font-body-text leading-height-paragraph md:text-lg text-neutral-1">
+              {item.answer}
+            </p>
+          ) : (
+            <Image
+              src={Map}
+              alt={t("kortet af løberuten")}
+              class="w-full max-w-md mx-auto mt-4"
+              loading="lazy"
+            />
+          )}
         </dd>
       </>
     ))
