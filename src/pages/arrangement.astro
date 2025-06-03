@@ -21,8 +21,8 @@ import BackwardArrow from "../assets/icons/back-arrow-icon.svg";
 ---
 
 <Layout title={t("Arrangement & events | Kær Kaffebar")}>
-  <main class="m-margin">
-    <article class="grid">
+  <main class="">
+    <article class="grid m-margin">
       <header class="flex flex-col gap-large lg:hidden">
         <h1 class="text-header-1 leading-height-header-1">
           {t("Arrangementer & events hos Kær Kaffebar")}
@@ -41,7 +41,7 @@ import BackwardArrow from "../assets/icons/back-arrow-icon.svg";
         </div>
       </header>
     </article>
-    <section class="flex flex-col md:gap-large">
+    <section class="flex flex-col md:gap-large m-margin">
       <h1 class="text-header-1 leading-height-header-1 max-w-[700px] hidden lg:block">
         {t("Arrangementer & events hos Kær Kaffebar")}
       </h1>
@@ -118,15 +118,15 @@ import BackwardArrow from "../assets/icons/back-arrow-icon.svg";
         <div id="rightFade" class="transition-opacity duration-300 pointer-events-none absolute top-0 right-0 h-full w-10 bg-gradient-to-l from-primary/70 to-transparent z-10"></div>
       </div>
     </section>
+    <div class="bg-primary-2 rounded-tr-large rounded-tl-large pb-section">
+      <h2 class="text-neutral-1 font-body-text text-header-2 text-left leading-height-header-2 sm:text-center p-large">
+        {t("Udfyld formular og send forespørgelse")}
+      </h2>
+      <section class="max-w-[450px] mx-auto" id="Form">
+        <Form />
+      </section>
+    </div>
   </main>
-  <div class="bg-primary-2 p-default rounded-t-default md:rounded-t-large pt-5 md:pt-10 mt-[-100px] md:mt-[-110px]">
-    <h2 class="text-neutral-1 font-body-text text-header-2 text-left leading-height-header-2 sm:text-center">
-      {t("Udfyld formular og send forespørgelse")}
-    </h2>
-    <section class="max-w-[450px] mx-auto scroll-mt-[200px]" id="Form">
-      <Form />
-    </section>
-  </div>
 </Layout>
 
 <script>
