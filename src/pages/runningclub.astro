@@ -72,13 +72,13 @@ const requestSend = Astro.url.searchParams.get("requestSend") ? true : false;
     <section class="lg:flex lg:flex-row gap-negative space-y-section">
       <div class="grid gap-default flex-shrink-0">
         <div class="flex flex-col items-start gap-default">
-          <h2 class="text-header-2">{t("Kommende ture")}</h2>
+          <h2 class="text-header-2 font-body-text leading-height-header-2">{t("Kommende ture")}</h2>
           <div>
             <label for="month-filter" class="sr-only">{t("Vælg måned")}</label>
             <select 
               id="month-filter"
               aria-label={t("Filtrer begivenheder efter måned")}
-              class="border border-accent p-small rounded-md color-accent"
+              class="border border-accent p-[8px] rounded-md color-accent"
             >
             {
               [
@@ -98,7 +98,7 @@ const requestSend = Astro.url.searchParams.get("requestSend") ? true : false;
                 <option
                   value={months[idx]}
                   selected={months[idx] === month}
-                  class="text-neutral-1"
+                  class="text-accent-2 font-body-text text-paragraph"
                 >
                   {m}
                 </option>
@@ -119,9 +119,9 @@ const requestSend = Astro.url.searchParams.get("requestSend") ? true : false;
             events.map((event) => (
             <PopUp show={false} id={`popup-${event.id}`}>
               <form method="POST" action="/api/clubevents" class="flex flex-col gap-default">
-                <h3>{t("Tilmelding")}</h3>
+                <h3 class="font-body-text text-header-3 leading-height-header-3 text-neutral-1">{t("Tilmelding")}</h3>
               <div class="flex flex-col gap-small">
-                <label for={`name-${event.id}`}>{t("Fulde Navn")}</label>
+                <label for={`name-${event.id}`}>{t("Fulde navn")}</label>
                 <input
                     type="text"
                     id={`name-${event.id}`}
@@ -169,7 +169,7 @@ const requestSend = Astro.url.searchParams.get("requestSend") ? true : false;
     </section>
     <section class="flex flex-col lg:flex-row gap-large mb-large">
       <div
-        class="h-[140px] lg:h-[60%] overflow-hidden rounded-full lg:w-[100%]"
+        class="h-[140px] sm:h-[180px] md:h-[200px] lg:h-[60%] overflow-hidden rounded-full lg:w-[100%]"
       >
         <Image
           src={RunningImage}
@@ -179,7 +179,7 @@ const requestSend = Astro.url.searchParams.get("requestSend") ? true : false;
         />
       </div>
       <div class="relative h-[250px]">
-        <h2 class="text-accent text-header-2 leading-header-2 text-center">
+        <h2 class="text-accent text-header-2 leading-header-2 text-center font-body-text">
           {t("Hos Kær Kaffebar handler det ikke kun om tempo, men om fællesskab og lokale bånd.")}
         </h2>
         <Image

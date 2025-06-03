@@ -357,7 +357,7 @@ export default defineAstroI18nConfig({
         "Tak for din tilmelding": "Thank you for your registration",
         "Ingen kommende ture": "No upcoming runs",
         Tilmelding: "Registration",
-        "Fulde Navn": "Full Name",
+        "Fulde navn": "Full name",
         Navn: "Name",
         Telefonnummer: "Phone number",
         Tilmeld: "Sign up",
