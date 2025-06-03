@@ -15,7 +15,7 @@ import SourdoughBuns from "../../assets/img/sourdough-buns-closeup.webp";
 import MiniTarts from "../../assets/img/mini-tarts-closeup.webp";
 ---
 
-<div class="grid gap-default md:grid-cols-[0.5fr_1fr]">
+<div class="mb-[7rem] md:mb-0 grid gap-default md:grid-cols-[0.5fr_1fr]">
   <div>
     <div class="grid gap-medium lg:gap-large">
       <h2 class="text-neutral-1 font-header text-header-1 leading-height-header-1">Mad galleri</h2>
@@ -23,14 +23,14 @@ import MiniTarts from "../../assets/img/mini-tarts-closeup.webp";
         <p class="text-neutral-1 text-paragraph font-bold font-body-text leading-height-tag">For vi spiser med øjnene først.</p>
         <h3 class="text-neutral-1 font-body-text text-header-3 leading-height-header-3">Hvis du mangler lidt ekstra lokkelse, så har vi sørget for at du kan se et udsnit af alle de lækre ting, som vi sælger i Kær Kaffebar.</h3>
       </div>
-      <div class="flex justify-end gap-default md:hidden">
+      <!-- <div class="flex justify-end gap-default md:hidden">
         <button id="backBtnMobile" class="bg-accent hover:bg-accent-hover rounded-full p-default w-fit hover:accent-accent-hover">
           <img src={BackwardArrow.src} alt="tilbage" width="20" height="20" loading="lazy" />
         </button>
         <button id="nextBtnMobile" class="bg-accent hover:bg-accent-hover rounded-full p-default w-fit hover:accent-accent-hover">
           <img src={ForwardArrow.src} alt="næste" width="20" height="20" loading="lazy" />
         </button>
-      </div>
+      </div> -->
     </div>
   </div>
   <div class="grid gap-default">
@@ -55,10 +55,10 @@ import MiniTarts from "../../assets/img/mini-tarts-closeup.webp";
         </div>
       </div>
       <!-- Venstre fade -->
-      <div id="leftFade" class="transition-opacity duration-300 pointer-events-none absolute top-0 left-0 h-full w-16 bg-gradient-to-r from-primary to-transparent z-10 hidden"></div>
+      <div id="leftFade" class="transition-opacity duration-300 pointer-events-none absolute top-0 left-0 h-full w-10 bg-gradient-to-r from-primary/70 to-transparent z-10 hidden"></div>
 
       <!-- Højre fade -->
-      <div id="rightFade" class="transition-opacity duration-300 pointer-events-none absolute top-0 right-0 h-full w-16 bg-gradient-to-l from-primary to-transparent z-10"></div>
+      <div id="rightFade" class="transition-opacity duration-300 pointer-events-none absolute top-0 right-0 h-full w-10 bg-gradient-to-l from-primary/70 to-transparent z-10"></div>
     </div>
   </div>
 </div>
@@ -66,8 +66,8 @@ import MiniTarts from "../../assets/img/mini-tarts-closeup.webp";
 <script>
   const scrollContainer = document.getElementById("galleryScroll");
 
-  const backBtnMobile = document.getElementById("backBtnMobile");
-  const nextBtnMobile = document.getElementById("nextBtnMobile");
+  //const backBtnMobile = document.getElementById("backBtnMobile");
+  //const nextBtnMobile = document.getElementById("nextBtnMobile");
 
   const backBtnDesktop = document.getElementById("backBtnDesktop");
   const nextBtnDesktop = document.getElementById("nextBtnDesktop");
@@ -82,8 +82,8 @@ import MiniTarts from "../../assets/img/mini-tarts-closeup.webp";
     scrollContainer.scrollBy({ left: -scrollAmount, behavior: "smooth" });
   }
 
-  if (nextBtnMobile) nextBtnMobile.addEventListener("click", scrollNext);
-  if (backBtnMobile) backBtnMobile.addEventListener("click", scrollBack);
+  //if (nextBtnMobile) nextBtnMobile.addEventListener("click", scrollNext);
+  //if (backBtnMobile) backBtnMobile.addEventListener("click", scrollBack);
   if (nextBtnDesktop) nextBtnDesktop.addEventListener("click", scrollNext);
   if (backBtnDesktop) backBtnDesktop.addEventListener("click", scrollBack);
 

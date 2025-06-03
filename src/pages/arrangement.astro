@@ -20,8 +20,8 @@ import ForwardArrow from "../assets/icons/forward-arrow-icon.svg";
 import BackwardArrow from "../assets/icons/back-arrow-icon.svg";
 ---
 
-<Layout title={t("Arrangement & events | Kær Kaffebar")}>
-  <main class="m-margin space-y-large">
+<Layout title={t("Arrangement & events")}>
+  <main class="m-margin">
     <article class="grid">
       <header class="flex flex-col gap-large lg:hidden">
         <h1 class="text-header-1 leading-height-header-1">
@@ -67,15 +67,15 @@ import BackwardArrow from "../assets/icons/back-arrow-icon.svg";
         </div>
       </article>
 
-      <div class="flex justify-end gap-default pb-default md:p-0 lg:hidden">
+      <!-- <div class="flex justify-end gap-default pb-default md:p-0 lg:hidden">
         <button id="backBtnMobile" class="bg-accent hover:bg-accent-hover rounded-full p-default w-fit hover:accent-accent-hover">
           <img src={BackwardArrow.src} alt="tilbage" width="20" height="20" loading="lazy" />
         </button>
         <button id="nextBtnMobile" class="bg-accent hover:bg-accent-hover rounded-full p-default w-fit hover:accent-accent-hover">
           <img src={ForwardArrow.src} alt="næste" width="20" height="20" loading="lazy" />
         </button>
-      </div>
-      <div class="relative">
+      </div> -->
+      <div class="relative mt-large">
         <div id="galleryScroll" class="relative h-[500px] md:h-[600px] flex overflow-x-scroll gap-default items-stretch">
           <Card image={ArrangementCardImage} alt="croissanter" loading="loading" bgColor="bg-neutral-3" title={t("Arrangement")} subtitle={t("Hold dit næste arrangement hos os")} description={t("Små selskaber i hyggelige rammer – perfekt til fødselsdage, babyshowers og bogklubber.")} popUpTitle={t("Arrangement")} subPopUpTitle={t("Hvis du leder efter det ideelle sted til dit næste arrangement, behøver du ikke lede længere end Kær Kaffebar.")} detailsOne={t("Send en forespørgelse om arrangement og så vil vi kontakte dig angående flere detaljer.")} detailsTwo={t("Lad os sammen skabe et mindeværdigt arrangement, som dine gæster vil tale om i lang tid fremover!")} btnText="Læs mere om arrangement" />
           <Card
@@ -112,10 +112,10 @@ import BackwardArrow from "../assets/icons/back-arrow-icon.svg";
         </div>
 
         <!-- Venstre fade -->
-        <div id="leftFade" class="transition-opacity duration-300 pointer-events-none absolute top-0 left-0 h-full w-16 bg-gradient-to-r from-primary to-transparent z-10 hidden"></div>
+        <div id="leftFade" class="transition-opacity duration-300 pointer-events-none absolute top-0 left-0 h-full w-10 bg-gradient-to-r from-primary/70 to-transparent z-10 hidden"></div>
 
         <!-- Højre fade -->
-        <div id="rightFade" class="transition-opacity duration-300 pointer-events-none absolute top-0 right-0 h-full w-16 bg-gradient-to-l from-primary to-transparent z-10"></div>
+        <div id="rightFade" class="transition-opacity duration-300 pointer-events-none absolute top-0 right-0 h-full w-10 bg-gradient-to-l from-primary/70 to-transparent z-10"></div>
       </div>
     </section>
   </main>
@@ -123,7 +123,7 @@ import BackwardArrow from "../assets/icons/back-arrow-icon.svg";
     <h2 class="text-neutral-1 font-body-text text-header-2 text-left leading-height-header-2 sm:text-center">
       {t("Udfyld formular og send forespørgelse")}
     </h2>
-    <section class="max-w-[450px] mx-auto" id="Form">
+    <section class="max-w-[450px] mx-auto scroll-mt-[200px]" id="Form">
       <Form />
     </section>
   </div>
@@ -133,13 +133,13 @@ import BackwardArrow from "../assets/icons/back-arrow-icon.svg";
   const scrollContainer = document.getElementById("galleryScroll");
 
   //defineret frem og tilbage knapper
-  const backBtnMobile = document.getElementById("backBtnMobile");
-  const nextBtnMobile = document.getElementById("nextBtnMobile");
+  //const backBtnMobile = document.getElementById("backBtnMobile");
+  //const nextBtnMobile = document.getElementById("nextBtnMobile");
   const backBtnDesktop = document.getElementById("backBtnDesktop");
   const nextBtnDesktop = document.getElementById("nextBtnDesktop");
 
   //hvor meget skal der scrolles
-  const scrollAmount = 330;
+  const scrollAmount = 200;
 
   //scroll frem funktion
   function scrollNext() {
@@ -152,11 +152,11 @@ import BackwardArrow from "../assets/icons/back-arrow-icon.svg";
   }
 
   //hvis der klikkes på nextBtn skal der scrolles frem
-  if (nextBtnMobile) nextBtnMobile.addEventListener("click", scrollNext);
+  //if (nextBtnMobile) nextBtnMobile.addEventListener("click", scrollNext);
   if (nextBtnDesktop) nextBtnDesktop.addEventListener("click", scrollNext);
 
   //hvis der klikkes på backBtn skal der scrolles tilbage
-  if (backBtnMobile) backBtnMobile.addEventListener("click", scrollBack);
+  //if (backBtnMobile) backBtnMobile.addEventListener("click", scrollBack);
   if (backBtnDesktop) backBtnDesktop.addEventListener("click", scrollBack);
 
   //defineret venstre og højre fade

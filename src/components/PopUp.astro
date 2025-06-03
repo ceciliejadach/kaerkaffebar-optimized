@@ -3,20 +3,14 @@ import Button from "./Button.astro";
 
 const { id, textStyle, show } = Astro.props;
 ---
-<div 
-  id={id}
-  class={`${show ? '' : "hidden"} fixed inset-0 z-60 backdrop-blur-sm bg-accent/10`}
-  role="dialog"
-  aria-modal="true"
->
-  <div
-    class=`w-[90%] lg:w-[50%] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-highlight p-large flex-col gap-large pin-skadow rounded-default overflow-y-auto`
-  >
+
+<div id={id} class={`${show ? "" : "hidden"} fixed inset-0 z-60 backdrop-blur-sm bg-accent/10`} role="dialog" aria-modal="true">
+  <div class=`w-[90%] lg:w-[50%] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-highlight p-large flex-col gap-large pin-skadow rounded-default overflow-y-auto`>
     <div class=`${textStyle}`>
       <slot />
     </div>
-    <div class="flex justify-center mt-auto p-medium">
-      <Button showArrow={false} type="button" closePopUp={id} ariaLabel="close-tab" variant="secondary">Luk</Button>
+    <div class="flex justify-center mt-auto pt-medium font-body-text text-button text-neutral-1">
+      <Button class="" showArrow={false} type="button" closePopUp={id} ariaLabel="close-tab" variant="secondary">Luk</Button>
     </div>
   </div>
 </div>
