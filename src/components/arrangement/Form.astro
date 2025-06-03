@@ -260,7 +260,7 @@ const requestSuccess = Astro.url.searchParams.get("requestSend") || false;
           } else if (id === "date") {
             dateError(field, span);
           } else if (id === "phoneNumber" && field.validity.patternMismatch) {
-            span.textContent = "Ugyldigt telefonnummer";
+            span.textContent = "Indtast 8 cifre uden mellemrum, eller brug +45 foran";
           } else {
             // error besked: hvad brugeren skal gøre/mangler : bruger vores property validationMessage
             span.textContent = field.validationMessage;
