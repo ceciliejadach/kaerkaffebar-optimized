@@ -21,105 +21,98 @@ import BackwardArrow from "../assets/icons/back-arrow-icon.svg";
 ---
 
 <Layout title={t("Arrangement & events | Kær Kaffebar")}>
-  <main class="">
-    <article class="grid m-margin">
-      <header class="flex flex-col gap-large lg:hidden">
-        <h1 class="text-header-1 leading-height-header-1">
+  <main>
+    <div class="m-margin">
+      <article class="">
+        <header class="flex flex-col gap-large lg:hidden">
+          <h1 class="text-header-1 leading-height-header-1">
+            {t("Arrangementer & events hos Kær Kaffebar")}
+          </h1>
+          <div>
+            <h3 class="text-neutral-1 text-header-3 font-body-text leading-height-header-3">
+              {t("Hold dit næste arrangement i de stemningsfulde lokaler hos Kær Kaffebar.")}
+              <strong>
+                {t("Send os en forespørgsel,")}
+              </strong>
+              {t("så klarer vi resten!")}
+            </h3>
+          </div>
+          <div class="lg:hidden md:hidden">
+            <ReadlineLink href="#Form" variant="primary">Send forespørgelse</ReadlineLink>
+          </div>
+        </header>
+      </article>
+      <section class="flex flex-col md:gap-large">
+        <h1 class="text-header-1 leading-height-header-1 max-w-[700px] hidden lg:block">
           {t("Arrangementer & events hos Kær Kaffebar")}
         </h1>
-        <div>
-          <h3 class="text-neutral-1 text-header-3 font-body-text leading-height-header-3">
-            {t("Hold dit næste arrangement i de stemningsfulde lokaler hos Kær Kaffebar.")}
-            <strong>
-              {t("Send os en forespørgsel,")}
-            </strong>
-            {t("så klarer vi resten!")}
-          </h3>
-        </div>
-        <div class="lg:hidden md:hidden">
-          <ReadlineLink href="#Form" variant="primary">Send forespørgelse</ReadlineLink>
-        </div>
-      </header>
-    </article>
-    <section class="flex flex-col md:gap-large m-margin">
-      <h1 class="text-header-1 leading-height-header-1 max-w-[700px] hidden lg:block">
-        {t("Arrangementer & events hos Kær Kaffebar")}
-      </h1>
+        <article class="hidden lg:flex justify-between items-center w-full gap-default">
+          <div class="max-w-[700px]">
+            <h3 class="text-neutral-1 text-header-3 font-body-text leading-height-header-3">
+              {t("Hold dit næste arrangement i de stemningsfulde lokaler hos Kær Kaffebar.")}
+              <strong>
+                {t("Send os en forespørgsel,")}
+              </strong>
+              {t("så klarer vi resten!")}
+            </h3>
+          </div>
 
-      <article class="hidden lg:flex justify-between items-center w-full gap-default">
-        <div class="max-w-[700px]">
-          <h3 class="text-neutral-1 text-header-3 font-body-text leading-height-header-3">
-            {t("Hold dit næste arrangement i de stemningsfulde lokaler hos Kær Kaffebar.")}
-            <strong>
-              {t("Send os en forespørgsel,")}
-            </strong>
-            {t("så klarer vi resten!")}
-          </h3>
+          <div class="flex justify-end gap-default shrink-0">
+            <button id="backBtnDesktop" class="bg-accent hover:bg-accent-hover rounded-full p-default w-fit hover:accent-accent-hover">
+              <img src={BackwardArrow.src} alt="tilbage" width="20" height="20" loading="lazy" />
+            </button>
+            <button id="nextBtnDesktop" class="bg-accent hover:bg-accent-hover rounded-full p-default w-fit hover:accent-accent-hover">
+              <img src={ForwardArrow.src} alt="næste" width="20" height="20" loading="lazy" />
+            </button>
+          </div>
+        </article>
+        <div class="relative mt-large">
+          <div id="galleryScroll" class="relative h-[500px] md:h-[600px] flex overflow-x-scroll gap-default items-stretch">
+            <Card image={ArrangementCardImage} alt="croissanter" loading="loading" bgColor="bg-neutral-3" title={t("Arrangement")} subtitle={t("Hold dit næste arrangement hos os")} description={t("Små selskaber i hyggelige rammer – perfekt til fødselsdage, babyshowers og bogklubber.")} popUpTitle={t("Arrangement")} subPopUpTitle={t("Hvis du leder efter det ideelle sted til dit næste arrangement, behøver du ikke lede længere end Kær Kaffebar.")} detailsOne={t("Send en forespørgelse om arrangement og så vil vi kontakte dig angående flere detaljer.")} detailsTwo={t("Lad os sammen skabe et mindeværdigt arrangement, som dine gæster vil tale om i lang tid fremover!")} btnText="Læs mere om arrangement" />
+            <Card
+              image={EventCardImage}
+              alt="Kær Kaffebar skilt"
+              loading="loading"
+              bgColor="bg-highlight"
+              title={t("Event")}
+              subtitle={t("Planlæg et unikt event på Kær Kaffebar")}
+              description={t("Workshops, pop-ups eller private aftenarrangementer? Vi hjælper dig med at skabe stemningen")}
+              popUpTitle={t("Event")}
+              subPopUpTitle={t("Hos Kær Kaffebar tilbyder vi den perfekte ramme for dit næste PR-event.")}
+              detailsOne={t("Vores hyggelige og stemningsfulde café i hjertet af Valby er ideel til at skabe en intim og imødekommende atmosfære, hvor din virksomheds budskab kan komme til sin ret.")}
+              detailsTwo={t("Med vores flotte indretning, udendørs siddepladser i solen og lækre udvalg af økologisk kaffe, friskpresset juice, og hjemmelavede specialiteter, kan du give dine gæster en uforglemmelig oplevelse.")}
+              detailsThree={t("Uanset om det drejer sig om en produktlancering, en netværksbegivenhed eller andet, kan vi skræddersy arrangementet til dine behov. Vi tilbyder muligheden for at reservere hele caféen og vores dedikerede personale sørger for, at alt forløber glat. Vi kan desuden arrangere specialmenuer, der passer til dit event, med tanke for dit brands identitet.")}
+              btnText="Læs mere om event"
+            />
+            <Card
+              image={CateringCardImage}
+              alt="brown colored illustration with whole and sliced lemons"
+              loading="lazy"
+              bgColor="bg-highlight"
+              title={t("Catering")}
+              subtitle={t("Catering med kærlighed og kvalitet")}
+              description={t("Bestil morgenmad, frokost eller kagebord til din næste sammenkomst – lavet med omtanke.")}
+              popUpTitle={t("Catering")}
+              subPopUpTitle={t("Lad os tage os af maden – så du kan tage dig af gæsterne.")}
+              detailsOne={t("Hos Kær Kaffebar tilbyder vi catering til både private og professionelle arrangementer, store som små. Uanset om du planlægger en fødselsdag, et firmaevent, en reception eller et møde, står vi klar med smagfulde løsninger, der passer perfekt til anledningen.")}
+              detailsTwo={t("Vi laver alt fra friskbagte kager og brød til lette anretninger, brunch, frokost og specialkaffe. Vores retter er lavet med kærlighed og omtanke – og vi bruger friske, økologiske råvarer, hvor det er muligt.")}
+              detailsThree={t("Har du særlige ønsker eller behov? Vi skræddersyr gerne en menu, der matcher dine præferencer og dit arrangement – både i smag og stil.")}
+              btnText="Læs mere om catering"
+            />
+            <Card alt="små tærter" image={SmallCakes} loading="lazy" bgColor="bg-highlight" title={t("Bestil kage")} subtitle={t("Bestil hjemmelavede kager til enhver lejlighed")} description={t("Bryllup, fødselsdage eller bare fordi - vi bager med smag og stil")} popUpTitle={t("Kage og bestilling")} subPopUpTitle={t("Skal der lidt ekstra sødt på bordet?")} detailsOne={t("Bestil en eller flere af vores populære hjemmebagte kager til din fest eller fejring.")} detailsTwo={t("Vi bager efter sæson og tilbyder alt fra klassiske favoritter til unikke specialiteter.")} btnText="Læs mere om bestilling" />
+          </div>
+
+          <!-- Venstre fade -->
+          <div id="leftFade" class="transition-opacity duration-300 pointer-events-none absolute top-0 left-0 h-full w-10 bg-gradient-to-r from-primary/70 to-transparent z-10 hidden"></div>
+
+          <!-- Højre fade -->
+          <div id="rightFade" class="transition-opacity duration-300 pointer-events-none absolute top-0 right-0 h-full w-10 bg-gradient-to-l from-primary/70 to-transparent z-10"></div>
         </div>
+      </section>
+    </div>
 
-        <div class="flex justify-end gap-default shrink-0">
-          <button id="backBtnDesktop" class="bg-accent hover:bg-accent-hover rounded-full p-default w-fit hover:accent-accent-hover">
-            <img src={BackwardArrow.src} alt="tilbage" width="20" height="20" loading="lazy" />
-          </button>
-          <button id="nextBtnDesktop" class="bg-accent hover:bg-accent-hover rounded-full p-default w-fit hover:accent-accent-hover">
-            <img src={ForwardArrow.src} alt="næste" width="20" height="20" loading="lazy" />
-          </button>
-        </div>
-      </article>
-
-      <!-- <div class="flex justify-end gap-default pb-default md:p-0 lg:hidden">
-        <button id="backBtnMobile" class="bg-accent hover:bg-accent-hover rounded-full p-default w-fit hover:accent-accent-hover">
-          <img src={BackwardArrow.src} alt="tilbage" width="20" height="20" loading="lazy" />
-        </button>
-        <button id="nextBtnMobile" class="bg-accent hover:bg-accent-hover rounded-full p-default w-fit hover:accent-accent-hover">
-          <img src={ForwardArrow.src} alt="næste" width="20" height="20" loading="lazy" />
-        </button>
-      </div> -->
-      <div class="relative mt-large">
-        <div id="galleryScroll" class="relative h-[500px] md:h-[600px] flex overflow-x-scroll gap-default items-stretch">
-          <Card image={ArrangementCardImage} alt="croissanter" loading="loading" bgColor="bg-neutral-3" title={t("Arrangement")} subtitle={t("Hold dit næste arrangement hos os")} description={t("Små selskaber i hyggelige rammer – perfekt til fødselsdage, babyshowers og bogklubber.")} popUpTitle={t("Arrangement")} subPopUpTitle={t("Hvis du leder efter det ideelle sted til dit næste arrangement, behøver du ikke lede længere end Kær Kaffebar.")} detailsOne={t("Send en forespørgelse om arrangement og så vil vi kontakte dig angående flere detaljer.")} detailsTwo={t("Lad os sammen skabe et mindeværdigt arrangement, som dine gæster vil tale om i lang tid fremover!")} btnText="Læs mere om arrangement" />
-          <Card
-            image={EventCardImage}
-            alt="Kær Kaffebar skilt"
-            loading="loading"
-            bgColor="bg-highlight"
-            title={t("Event")}
-            subtitle={t("Planlæg et unikt event på Kær Kaffebar")}
-            description={t("Workshops, pop-ups eller private aftenarrangementer? Vi hjælper dig med at skabe stemningen")}
-            popUpTitle={t("Event")}
-            subPopUpTitle={t("Hos Kær Kaffebar tilbyder vi den perfekte ramme for dit næste PR-event.")}
-            detailsOne={t("Vores hyggelige og stemningsfulde café i hjertet af Valby er ideel til at skabe en intim og imødekommende atmosfære, hvor din virksomheds budskab kan komme til sin ret.")}
-            detailsTwo={t("Med vores flotte indretning, udendørs siddepladser i solen og lækre udvalg af økologisk kaffe, friskpresset juice, og hjemmelavede specialiteter, kan du give dine gæster en uforglemmelig oplevelse.")}
-            detailsThree={t("Uanset om det drejer sig om en produktlancering, en netværksbegivenhed eller andet, kan vi skræddersy arrangementet til dine behov. Vi tilbyder muligheden for at reservere hele caféen og vores dedikerede personale sørger for, at alt forløber glat. Vi kan desuden arrangere specialmenuer, der passer til dit event, med tanke for dit brands identitet.")}
-            btnText="Læs mere om event"
-          />
-          <Card
-            image={CateringCardImage}
-            alt="brown colored illustration with whole and sliced lemons"
-            loading="lazy"
-            bgColor="bg-highlight"
-            title={t("Catering")}
-            subtitle={t("Catering med kærlighed og kvalitet")}
-            description={t("Bestil morgenmad, frokost eller kagebord til din næste sammenkomst – lavet med omtanke.")}
-            popUpTitle={t("Catering")}
-            subPopUpTitle={t("Lad os tage os af maden – så du kan tage dig af gæsterne.")}
-            detailsOne={t("Hos Kær Kaffebar tilbyder vi catering til både private og professionelle arrangementer, store som små. Uanset om du planlægger en fødselsdag, et firmaevent, en reception eller et møde, står vi klar med smagfulde løsninger, der passer perfekt til anledningen.")}
-            detailsTwo={t("Vi laver alt fra friskbagte kager og brød til lette anretninger, brunch, frokost og specialkaffe. Vores retter er lavet med kærlighed og omtanke – og vi bruger friske, økologiske råvarer, hvor det er muligt.")}
-            detailsThree={t("Har du særlige ønsker eller behov? Vi skræddersyr gerne en menu, der matcher dine præferencer og dit arrangement – både i smag og stil.")}
-            btnText="Læs mere om catering"
-          />
-          <Card alt="små tærter" image={SmallCakes} loading="lazy" bgColor="bg-highlight" title={t("Bestil kage")} subtitle={t("Bestil hjemmelavede kager til enhver lejlighed")} description={t("Bryllup, fødselsdage eller bare fordi - vi bager med smag og stil")} popUpTitle={t("Kage og bestilling")} subPopUpTitle={t("Skal der lidt ekstra sødt på bordet?")} detailsOne={t("Bestil en eller flere af vores populære hjemmebagte kager til din fest eller fejring.")} detailsTwo={t("Vi bager efter sæson og tilbyder alt fra klassiske favoritter til unikke specialiteter.")} btnText="Læs mere om bestilling" />
-        </div>
-
-        <!-- Venstre fade -->
-        <div id="leftFade" class="transition-opacity duration-300 pointer-events-none absolute top-0 left-0 h-full w-10 bg-gradient-to-r from-primary/70 to-transparent z-10 hidden"></div>
-
-        <!-- Højre fade -->
-        <div id="rightFade" class="transition-opacity duration-300 pointer-events-none absolute top-0 right-0 h-full w-10 bg-gradient-to-l from-primary/70 to-transparent z-10"></div>
-      </div>
-    </section>
-    <div class="bg-primary-2 rounded-tr-large rounded-tl-large pb-section">
-      <h2 class="text-neutral-1 font-body-text text-header-2 text-left leading-height-header-2 sm:text-center p-large">
+    <div class="bg-primary-2 rounded-tr-large rounded-tl-large pb-section mt-[-120px]">
+      <h2 class="text-neutral-1 font-body-text text-header-2 text-left leading-height-header-2 sm:text-center p-default">
         {t("Udfyld formular og send forespørgelse")}
       </h2>
       <section class="max-w-[450px] mx-auto" id="Form">
