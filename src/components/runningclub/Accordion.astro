@@ -11,39 +11,15 @@ import Map from "../../assets/img/map.webp";
     items.map((item, index) => (
       <>
         <dt class="w-full my-3" data-index={index}>
-          <button
-            type="button"
-            class="accordion-toggle flex items-center text-left justify-between w-full border-b-1 border-text py-2"
-            aria-expanded="false"
-            aria-controls={`accordion-content-${index}`}
-            id={`accordion-header-${index}`}
-          >
-            <span class="text-neutral-1 text-header-3 leading-height-header-3 font-body-text">
-              {item.question}
-            </span>
+          <button type="button" class="accordion-toggle flex items-center text-left justify-between w-full border-b-1 border-text py-2" aria-expanded="false" aria-controls={`accordion-content-${index}`} id={`accordion-header-${index}`}>
+            <span class="text-neutral-1 text-header-3 leading-height-header-3 font-body-text">{item.question}</span>
             <span class="icon text-white text-2xl pr-2">
               <PlusIcon />
             </span>
           </button>
         </dt>
-        <dd
-          id={`accordion-content-${index}`}
-          class="accordion-content max-h-0 overflow-hidden pt-1 transition-all duration-500 ease-in-out"
-          role="region"
-          aria-labelledby={`accordion-header-${index}`}
-        >
-          {item.answer ? (
-            <p class="text-paragraph font-body-text leading-height-paragraph md:text-lg text-neutral-1">
-              {item.answer}
-            </p>
-          ) : (
-            <Image
-              src={Map}
-              alt={t("kortet af løberuten")}
-              class="w-full max-w-md mx-auto mt-4"
-              loading="lazy"
-            />
-          )}
+        <dd id={`accordion-content-${index}`} class="accordion-content max-h-0 overflow-hidden pt-1 transition-all duration-500 ease-in-out" role="region" aria-labelledby={`accordion-header-${index}`}>
+          {item.answer ? <p class="text-paragraph font-body-text leading-height-paragraph md:text-lg text-neutral-1">{item.answer}</p> : <Image src={Map} alt={t("kortet af løberuten")} class="w-full max-w-md mx-auto mt-4 rounded-default" loading="lazy" />}
         </dd>
       </>
     ))
