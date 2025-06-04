@@ -39,8 +39,8 @@ import LangSwitcher from "./LangSwitcher.astro";
       <div class="flex gap-4 items-center lg:hidden mx-small">
         <AnchorLink role="menuitem" variant="primary" url="https://kaerkaffebar.superbexperience.com/" ariaLabel="Book bord">{t("Book bord")}</AnchorLink>
         <button id="mobile-menu-button" class="p-2 focus:outline-none relative" aria-label="Toggle menu" aria-controls="mobile-menu">
-          <div class="burger-btn rounded-lg text-paragraph">
-            Menu
+          <div class="burger-btn rounded-lg font-body-text text-paragraph text-accent-2">
+            <span id="menu-text">Menu</span>
           </div>
         </button>
       </div>
@@ -143,6 +143,7 @@ import LangSwitcher from "./LangSwitcher.astro";
   // Definere funktionen hvordan menuen skal åbnes
   function openMenu() {
     mobileMenu.classList.remove("hidden");
+    document.getElementById("menu-text").textContent = "Luk Menu";
     gsap.fromTo(
       mobileMenu,
       { x: "100%", opacity: 0 },
@@ -164,6 +165,8 @@ import LangSwitcher from "./LangSwitcher.astro";
   // Definere hvordan vi gerne vil lukke menuen
   function closeMenu() {
     const items = mobileMenu.querySelectorAll(".menu-item");
+    mobileMenu.classList.remove("hidden");
+    document.getElementById("menu-text").textContent = "Menu";
     gsap.to(items, {
       opacity: 0,
       x: 60,
