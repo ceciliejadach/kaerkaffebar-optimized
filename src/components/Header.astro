@@ -36,13 +36,11 @@ import LangSwitcher from "./LangSwitcher.astro";
       </nav>
 
       <!-- Mobile Navigation Controls -->
-      <div class="flex gap-4 items-center lg:hidden mx-large">
+      <div class="flex gap-4 items-center lg:hidden mx-small">
         <AnchorLink role="menuitem" variant="primary" url="https://kaerkaffebar.superbexperience.com/" ariaLabel="Book bord">{t("Book bord")}</AnchorLink>
         <button id="mobile-menu-button" class="p-2 focus:outline-none relative" aria-label="Toggle menu" aria-controls="mobile-menu">
-          <div class="burger-btn rounded-lg p-default">
-            <span></span>
-            <span></span>
-            <span></span>
+          <div class="burger-btn rounded-lg text-paragraph">
+            Menu
           </div>
         </button>
       </div>
@@ -70,6 +68,7 @@ import LangSwitcher from "./LangSwitcher.astro";
 </header>
 
 <style>
+  /*
   .burger-btn {
     position: absolute;
     z-index: 1000;
@@ -120,12 +119,7 @@ import LangSwitcher from "./LangSwitcher.astro";
       }
     }
   }
-
-  @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
-  #mobile-menu-button {
-    display: block !important;
-  }
-}
+    */
 </style>
 
 <script is:inline type="module">
