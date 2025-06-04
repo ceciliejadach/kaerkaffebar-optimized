@@ -113,7 +113,7 @@ const requestSend = Astro.url.searchParams.get("requestSend") ? true : false;
           </div>
         </div>
         <PopUp show={requestSend} id="popup-confirmation">
-          <h3 id="confirmation">{t("Tak for din tilmelding")}</h3>
+          <h3 class=" text-center text-header-3 leading-height-header-3 text-neutral-1 font-body-text" id="confirmation">{t("Tak for din tilmelding!")}</h3>
         </PopUp>
         <!-- Mapping events from API -->
         {
@@ -132,7 +132,7 @@ const requestSend = Astro.url.searchParams.get("requestSend") ? true : false;
                     name="name"
                     placeholder={t("Navn")}
                     required
-                    class="border-2 border-faded-highlight rounded-sm p-2 bg-white"
+                    class="border-1 border-faded-highlight rounded-sm p-2 bg-white"
                     autocomplete="name"
                   />
               </div>
@@ -144,7 +144,7 @@ const requestSend = Astro.url.searchParams.get("requestSend") ? true : false;
                     name="number"
                     placeholder={t("Telefonnummer")}
                     required
-                    class="border-2 border-faded-highlight rounded-sm p-2 bg-white"
+                    class="border-1 border-faded-highlight rounded-sm p-2 bg-white"
                     autocomplete="tel"
                   />
                   <!-- Hidden input to pass event ID -->
