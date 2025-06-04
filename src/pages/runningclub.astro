@@ -122,31 +122,39 @@ const requestSend = Astro.url.searchParams.get("requestSend") ? true : false;
           ) : (
             events.map((event) => (
             <PopUp show={false} id={`popup-${event.id}`}>
-              <form method="POST" action="/api/clubevents" class="flex flex-col gap-default">
+              <form id="requestRunning" novalidate method="POST" action="/api/clubevents" class="flex flex-col gap-default">
                 <h3 class="font-body-text text-header-3 leading-height-header-3 text-neutral-1">{t("Tilmelding")}</h3>
               <div class="flex flex-col gap-small">
-                <label for={`name-${event.id}`}>{t("Fulde navn")}</label>
+                <label for={`name-${event.id}`}>{t("Fulde navn")}*</label>
                 <input
-                    type="text"
                     id={`name-${event.id}`}
                     name="name"
-                    placeholder={t("Navn")}
-                    required
-                    class="border-1 border-faded-highlight rounded-sm p-2 bg-white"
+                    type="text"
                     autocomplete="name"
-                  />
+                    placeholder={t("Navn")}
+                    aria-invalid="false"
+                    aria-errormessage="nameError"
+                    class="border-1 border-faded-highlight rounded-sm p-2 bg-white"
+                    required
+                    />
+                    <span id={`numberError-${event.id}`} class="error-message hidden name-error" role="alert"></span>
               </div>
               <div class="flex flex-col gap-small">
-               <label for={`number-${event.id}`}>{t("Telefonnummer")}</label>
+               <label for={`number-${event.id}`}>{t("Telefonnummer")}*</label>
                   <input
-                    type="tel"
                     id={`number-${event.id}`}
+                    type="tel"
                     name="number"
                     placeholder={t("Telefonnummer")}
-                    required
                     class="border-1 border-faded-highlight rounded-sm p-2 bg-white"
                     autocomplete="tel"
+                    aria-invalid="false"
+                    aria-errormessage="numberError"
+                    pattern="[0-9+]{8,}"
+                    inputmode="numeric"
+                    required
                   />
+                  <span id={`numberError-${event.id}`} class="error-message hidden number-error" role="alert"></span>
                   <!-- Hidden input to pass event ID -->
                   <input type="hidden" name="eventId" value={event.id} />
               </div>
@@ -197,3 +205,104 @@ const requestSend = Astro.url.searchParams.get("requestSend") ? true : false;
   </main>
 </Layout>
 
+<style>
+  /* Error farve*/
+  .error-message {
+    color: var(--color-secondary);
+  }
+  .error-message.hidden {
+    display: none;
+  }
+  /*Invalide felter */
+  input.invalid,
+  textarea.invalid {
+    border: 2px solid var(--color-secondary) !important;
+  }
+
+  /*Valide felter. Anvender pseudo valid og sætter invalid til false (kigger i vores script).
+   !important bruger vi til at vise stilen tydeligt */
+  input:valid[aria-invalid="false"],
+  textarea:valid[aria-invalid="false"] {
+    border: 2px solid var(--color-accent) !important;
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Find alle løbeklubsformularer
+    const forms = document.querySelectorAll('form[id^="requestRunning"]');
+    
+    forms.forEach(form => {
+      let submitted = false;
+      
+      // Brug klasser i stedet for id'er
+      const nameField = form.querySelector('input[name="name"]');
+      const numberField = form.querySelector('input[name="number"]');
+      const nameError = form.querySelector('.name-error');
+      const numberError = form.querySelector('.number-error');
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        submitted = true;
+        let allValid = true;
+
+        // Valider navn
+        if (!nameField.checkValidity()) {
+          allValid = false;
+          nameField.classList.add("invalid");
+          nameField.setAttribute("aria-invalid", "true");
+          nameError.classList.remove("hidden");
+          nameError.textContent = "Fulde navn er påkrævet";
+        } else {
+          nameField.classList.remove("invalid");
+          nameField.setAttribute("aria-invalid", "false");
+          nameError.classList.add("hidden");
+        }
+
+        // Valider telefonnummer
+        if (!numberField.checkValidity()) {
+          allValid = false;
+          numberField.classList.add("invalid");
+          numberField.setAttribute("aria-invalid", "true");
+          numberError.classList.remove("hidden");
+          
+          if (numberField.validity.patternMismatch) {
+            numberError.textContent = "Ugyldigt telefonnummer";
+          } else {
+            numberError.textContent = numberField.validationMessage;
+          }
+        } else {
+          numberField.classList.remove("invalid");
+          numberField.setAttribute("aria-invalid", "false");
+          numberError.classList.add("hidden");
+        }
+
+        if (allValid) form.submit();
+      });
+
+      [nameField, numberField].forEach(field => {
+        field.addEventListener("input", () => {
+          if (!submitted) return;
+
+          const errorSpan = field === nameField ? nameError : numberError;
+          
+          if (field.checkValidity()) {
+            field.classList.remove("invalid");
+            field.setAttribute("aria-invalid", "false");
+            errorSpan.classList.add("hidden");
+          } else {
+            field.classList.add("invalid");
+            field.setAttribute("aria-invalid", "true");
+            errorSpan.classList.remove("hidden");
+            
+            if (field === numberField && field.validity.patternMismatch) {
+              errorSpan.textContent = "Indtast 8 cifre uden mellemrum, eller brug +45 foran";
+            } else {
+              errorSpan.textContent = field.validationMessage;
+            }
+          }
+        });
+      });
+    });
+  });
+</script>
