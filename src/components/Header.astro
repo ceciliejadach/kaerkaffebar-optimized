@@ -72,6 +72,7 @@ import LangSwitcher from "./LangSwitcher.astro";
 <style>
   .burger-btn {
     position: absolute;
+    z-index: 1000;
     right: 0;
     left: 0;
     margin: 0 auto;
@@ -119,6 +120,12 @@ import LangSwitcher from "./LangSwitcher.astro";
       }
     }
   }
+
+  @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+  #mobile-menu-button {
+    display: block !important;
+  }
+}
 </style>
 
 <script is:inline type="module">
