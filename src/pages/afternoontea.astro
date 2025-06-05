@@ -68,10 +68,16 @@ import AnchorLink from "../components/AnchorLink.astro";
         </div>
       </div>
     </div>
-
+    <div class="bg-neutral-3 max-w-[98vw] pl-default py-large rounded-r-full sm:pl-large sm:pr-large md:max-w-[1316px] md:px-[124px] md:py-[64px] grid gap-default mb-[5rem] mt-[-5rem]">
+      <h2 class="font-body-text text-header-2 text-neutral-1 leading-height-header-2 md:text-center">{t("Lyst til noget andet?")}</h2>
+      <h3 class="font-body-text text-header-3 text-neutral-1 leading-height-header-3 md:text-center">{t("Oplev vores håndlavet bagværk, kaffe, kager og frokostretter i vores menu")}</h3>
+      <div class="grid w-fit sm:w-full sm:justify-items-center">
+        <AnchorLink url="/menu" variant="primary" ariaLabel={t("Se menu")}>{t("Se menu")}</AnchorLink>
+      </div>
+    </div>
+    <!-- 
     <div class="mb-section">
       <QuoteSection content={t("Skab nye minder over fine porcelænskopper, varme scones og liflig te – en lille stund af ro og forkælelse midt i Valby.")} bgColor="bg-neutral-3" />
-    </div>
+    </div> -->
   </main>
 </Layout>
-
